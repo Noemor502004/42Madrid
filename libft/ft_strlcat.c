@@ -71,7 +71,7 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 */
 int ft_strlcat(char *dst, const char *src, size_t size)
 {
-    int i;
+    size_t i;
     int j;
     int lenght;
 
@@ -84,6 +84,7 @@ int ft_strlcat(char *dst, const char *src, size_t size)
         i++;
         j++;
     }
+	dst[i] = '\0';
     return (lenght);
 }
 /*
