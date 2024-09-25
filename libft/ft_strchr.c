@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmorgado <nmorgado@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/21 17:35:20 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/09/21 17:36:50 by nmorgado         ###   ########.fr       */
+/*   Created: 2024/09/25 18:34:30 by nmorgado          #+#    #+#             */
+/*   Updated: 2024/09/25 18:34:32 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
-//#include <string.h>
-
-int	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
-	int		lenght;
+	int	i;
+	const char	*pointer;
 
 	i = 0;
-	lenght = 0;
-	while (src[i] != '\0' && i < size - 1)
+	while (s[i] != '\0')
 	{
-		dst[i] = src[i];
+		if(s[i] == c)
+		{
+			pointer = &s[i];
+			return ((char *) pointer);
+		}
 		i++;
-		lenght++;
 	}
-	dst[i] = '\0';
-	while (src[lenght] != '\0')
-		lenght++;
-	return (lenght);
+		return (0);
+	
 }

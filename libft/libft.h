@@ -22,6 +22,9 @@
 #include "ft_memmove.c"
 #include "ft_strlcpy.c"
 #include "ft_strlcat.c"
+#include "ft_toupper.c"
+#include "ft_tolower.c"
+#include "ft_strchr.c"
 
 int		ft_isalpha(int c);
 
@@ -46,3 +49,9 @@ void	*ft_memmove(void *dest, const void *src, size_t n);
 int		ft_strlcpy(char *dst, const char *src, size_t size);
 
 int		ft_strlcat(char *dst, const char *src, size_t size);
+
+int		ft_toupper(int c);
+
+int		ft_tolower(int c);
+
+char	*ft_strchr(const char *s, int c);
