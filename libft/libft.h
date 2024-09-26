@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:11:46 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/09/21 15:54:16 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/09/26 16:53:14 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 #include "ft_toupper.c"
 #include "ft_tolower.c"
 #include "ft_strchr.c"
+#include "ft_strrchr.c"
+#include "ft_strncmp.c"
+#include "ft_memchr.c"
 
 int		ft_isalpha(int c);
 
@@ -55,3 +58,9 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 
 char	*ft_strchr(const char *s, int c);
+
+char	*ft_strrchr(const char *s, int c);
+
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+
+void	*ft_memchr(const void *s, int c, size_t n);
