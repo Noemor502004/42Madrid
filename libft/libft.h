@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:11:46 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/09/26 18:14:39 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/09/27 17:34:19 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 #include "ft_memchr.c"
 #include "ft_memcmp.c"
 #include "ft_strnstr.c"
+#include "ft_atoi.c"
 
 int		ft_isalpha(int c);
 
@@ -70,3 +71,5 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 
 char	*ft_strnstr(const char *big, const char *little, size_t len);
+
+int		ft_atoi(const char *nptr);
