@@ -6,11 +6,11 @@
 /*   By: yoomi <yoomi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 15:51:02 by yoomi             #+#    #+#             */
-/*   Updated: 2024/09/29 19:27:01 by yoomi            ###   ########.fr       */
+/*   Updated: 2024/10/01 09:30:00 by yoomi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include <stdlib.h>
 #include "libft.h"
 
 void	*ft_calloc(size_t nmemb, size_t size)
