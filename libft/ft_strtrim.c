@@ -6,58 +6,73 @@
 /*   By: yoomi <yoomi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 08:40:35 by yoomi             #+#    #+#             */
-/*   Updated: 2024/10/02 12:38:12 by yoomi            ###   ########.fr       */
+/*   Updated: 2024/10/02 15:00:37 by yoomi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "stdio.h"
 
-char    *ft_strtrim(char const *s1, char const *set)
+int	startcut(char const *s1, char const *set)
 {
-	int		i;
-	int		j;
-	int		bolStart;
-	int		bolEnd;
-	int		tempCount;
+	int	bolstart;
+	int	tempcount;
+	int	i;
+
+	i = 0;
+	bolstart = 1;
+	while (bolstart != 0)
+	{
+		bolstart = 0;
+		tempcount = 0;
+		while (set[tempcount] != '\0')
+		{
+			if (set[tempcount] == s1[i])
+				bolstart = 1;
+			tempcount++;
+		}
+		if (bolstart == 0)
+			return (i);
+		i++;
+	}
+	return (i);
+}
+
+int	endcut(char const *s1, char const *set)
+{
+	int	bolend;
+	int	tempcount;
+	int	j;
+
+	j = ft_strlen(s1) - 1;
+	bolend = 1;
+	while (bolend != 0)
+	{
+		bolend = 0;
+		tempcount = 0;
+		while (set[tempcount] != '\0')
+		{
+			if (set[tempcount] == s1[j])
+				bolend = 1;
+			tempcount++;
+		}
+		if (bolend == 0)
+			return (j);
+		j--;
+	}
+	return (j);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
 	int		start;
 	int		end;
 	char	*string;
 
-	bolStart = 1;
-	bolEnd = 1;
-	i = 0;
-	j = ft_strlen(s1) - 1;
-	while(bolStart != 0)
-	{
-		bolStart = 0;
-		tempCount = 0;
-		while(set[tempCount] != '\0')
-		{
-			if (set[tempCount] == s1[i])
-				bolStart = 1;
-			tempCount++;
-		}
-		if (bolStart == 0)
-			start = i;
-		i++;
-	}
-	while(bolEnd != 0)
-	{
-		bolEnd = 0;
-		tempCount = 0;
-		while(set[tempCount] != '\0')
-		{
-			if (set[tempCount] == s1[j])
-				bolEnd = 1;
-			tempCount++;
-		}
-		if (bolEnd == 0)
-			end = j;
-		j--;
-	}
+	start = startcut(s1, set);
+	end = endcut(s1, set);
 	string = ft_calloc(end - start + 2, 1);
-	ft_strlcpy(string, s1 + start, end + 2);
+	ft_strlcpy(string, s1 + start, end - start + 2);
 	string[ft_strlen(string)] = '\0';
 	return (string);
 }

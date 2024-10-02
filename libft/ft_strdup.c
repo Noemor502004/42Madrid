@@ -6,11 +6,11 @@
 /*   By: yoomi <yoomi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:13:33 by yoomi             #+#    #+#             */
-/*   Updated: 2024/09/28 16:22:18 by yoomi            ###   ########.fr       */
+/*   Updated: 2024/10/02 14:56:25 by yoomi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strdup(const char *s)
+char	*ft_strdup(const char *s)
 {
 	char	*string;
 	int		i;
