@@ -6,11 +6,34 @@
 /*   By: yoomi <yoomi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 15:05:00 by yoomi             #+#    #+#             */
-/*   Updated: 2024/09/29 19:33:55 by yoomi            ###   ########.fr       */
+/*   Updated: 2024/10/02 16:59:44 by yoomi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "unistd.h"
+
+static	char	**mk_string2(char const *s, char c, char **string)
+{
+	int	k;
+	int	i;
+	int	j;
+
+	k = 0;
+	i = 0;
+	j = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == c || s[i + 1] == '\0')
+		{
+			string[j] = ft_calloc(i - k, 1);
+			j++;
+			k = i;
+		}
+		i++;
+	}
+	return (string);
+}
 
 static	char	**mk_string(char const *s, char c, char **string, int i)
 {
@@ -19,25 +42,14 @@ static	char	**mk_string(char const *s, char c, char **string, int i)
 	j = 1;
 	while (s[i] != '\0')
 	{
-		if (s[i] == c)
+		if (s[i] == c && s[i + 1] != c)
 		{
 			j++;
 		}
 		i++;
 	}
 	string = ft_calloc(j, 1);
-	i = 0;
-	j = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == c || s[i + 1] == '\0')
-		{
-			string[j] = ft_calloc(i - ft_strlen(string[j - 1] + 1), 1);
-			j++;
-		}
-		i++;
-	}
-	return (string);
+	return (mk_string2(s, c, string));
 }
 
 char	**ft_split(char const *s, char c)

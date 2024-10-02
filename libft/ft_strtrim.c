@@ -6,14 +6,14 @@
 /*   By: yoomi <yoomi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 08:40:35 by yoomi             #+#    #+#             */
-/*   Updated: 2024/10/02 15:00:37 by yoomi            ###   ########.fr       */
+/*   Updated: 2024/10/02 16:55:53 by yoomi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "stdio.h"
 
-int	startcut(char const *s1, char const *set)
+static	int	startcut(char const *s1, char const *set)
 {
 	int	bolstart;
 	int	tempcount;
@@ -38,7 +38,7 @@ int	startcut(char const *s1, char const *set)
 	return (i);
 }
 
-int	endcut(char const *s1, char const *set)
+static	endcut(char const *s1, char const *set)
 {
 	int	bolend;
 	int	tempcount;
