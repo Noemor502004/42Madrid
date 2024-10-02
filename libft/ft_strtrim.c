@@ -6,7 +6,7 @@
 /*   By: yoomi <yoomi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 08:40:35 by yoomi             #+#    #+#             */
-/*   Updated: 2024/10/02 16:55:53 by yoomi            ###   ########.fr       */
+/*   Updated: 2024/10/02 22:19:54 by yoomi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static	int	startcut(char const *s1, char const *set)
 	return (i);
 }
 
-static	endcut(char const *s1, char const *set)
+static int	endcut(char const *s1, char const *set)
 {
 	int	bolend;
 	int	tempcount;
