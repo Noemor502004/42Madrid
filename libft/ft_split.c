@@ -6,13 +6,11 @@
 /*   By: yoomi <yoomi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 15:05:00 by yoomi             #+#    #+#             */
-/*   Updated: 2024/10/02 22:22:43 by yoomi            ###   ########.fr       */
+/*   Updated: 2024/10/03 08:42:27 by yoomi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
-#include <stdio.h>
 
 static	char	**write_string(char	const *s, char c, char **string)
 {

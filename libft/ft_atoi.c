@@ -6,11 +6,11 @@
 /*   By: yoomi <yoomi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:15:14 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/09/28 15:04:22 by yoomi            ###   ########.fr       */
+/*   Updated: 2024/10/03 16:53:32 by yoomi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 static	int	ft_atoi2(const char *nptr, size_t i, int exponent)
 {

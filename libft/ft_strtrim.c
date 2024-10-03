@@ -6,12 +6,11 @@
 /*   By: yoomi <yoomi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 08:40:35 by yoomi             #+#    #+#             */
-/*   Updated: 2024/10/02 22:19:54 by yoomi            ###   ########.fr       */
+/*   Updated: 2024/10/03 08:41:59 by yoomi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stdio.h"
 
 static	int	startcut(char const *s1, char const *set)
 {

@@ -6,11 +6,11 @@
 /*   By: yoomi <yoomi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 17:45:40 by yoomi             #+#    #+#             */
-/*   Updated: 2024/10/02 15:01:19 by yoomi            ###   ########.fr       */
+/*   Updated: 2024/10/03 16:56:23 by yoomi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

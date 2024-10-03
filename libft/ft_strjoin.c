@@ -6,9 +6,11 @@
 /*   By: yoomi <yoomi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 18:04:16 by yoomi             #+#    #+#             */
-/*   Updated: 2024/10/02 14:55:54 by yoomi            ###   ########.fr       */
+/*   Updated: 2024/10/03 16:55:15 by yoomi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
