@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:11:46 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/04 14:26:48 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/04 15:18:30 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,3 +74,9 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
 void	ft_putchar_fd(char c, int fd);
+
+void	ft_putstr_fd(char *s, int fd);
+
+void	ft_putendl_fd(char *s, int fd);
+
+void	ft_putnbr_fd(int n, int fd);
