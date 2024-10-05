@@ -10,4 +10,9 @@ libft.a: $(OBJS)
 	gcc -Wall -Wextra -Werror -c $< -o $@
 
 clean:
+	rm -rf *.o
+
+fclean:
 	rm -rf *.o libft.a
+
+re: fclean all
