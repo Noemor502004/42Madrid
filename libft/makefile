@@ -39,7 +39,7 @@ OBJS = $(SRCS:.c=.o)
 libft.a: $(OBJS)
 	ar rcs libft.a $(OBJS)
 
-%.o: %.c
+$(OBJS): $(SRCS)
 	gcc -Wall -Wextra -Werror -c $< -o $@
 
 clean:
