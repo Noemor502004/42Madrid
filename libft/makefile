@@ -1,5 +1,9 @@
 all: libft.a
 
+CC = gcc
+
+FLAGS = -Wall -Wextra -Werror
+
 SRCS = ft_atoi.c \
 ft_bzero.c \
 ft_calloc.c \
@@ -39,8 +43,8 @@ OBJS = $(SRCS:.c=.o)
 libft.a: $(OBJS)
 	ar rcs libft.a $(OBJS)
 
-$(OBJS): $(SRCS)
-	gcc -Wall -Wextra -Werror -c $< -o $@
+%.o: %.c
+	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
 	rm -rf *.o
