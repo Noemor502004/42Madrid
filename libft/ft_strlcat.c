@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoomi <yoomi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 16:48:16 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/04 15:02:31 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/05 20:27:54 by yoomi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 int	ft_strlcat(char *dst, const char *src, size_t size)
 {
@@ -18,9 +19,11 @@ int	ft_strlcat(char *dst, const char *src, size_t size)
 	int		j;
 	int		lenght;
 
+	if (dst == 0 || size == 0)
+		return (0);
 	j = 0;
 	i = ft_strlen(dst);
-	lenght = ft_strlen(dst) + ft_strlen(src);
+	lenght = ft_strlen(dst) + ft_strlen(src) - 1;
 	while (i < size - 1)
 	{
 		dst[i] = src[j];
@@ -28,5 +31,7 @@ int	ft_strlcat(char *dst, const char *src, size_t size)
 		j++;
 	}
 	dst[i] = '\0';
+	printf("%s", dst);
+	printf("%li", ft_strlen(dst));
 	return (lenght);
 }

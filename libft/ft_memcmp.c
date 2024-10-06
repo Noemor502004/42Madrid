@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoomi <yoomi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:38:20 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/04 15:02:06 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/05 19:01:13 by yoomi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	string2 = (const char *)s2;
 	while (i < n)
 	{
-		if (string1[i] > string2[i])
+		if (string1[i] > string2[i] || string2[i] == '\0')
 			return (1);
-		if (string2[i] > string1[i])
+		if (string2[i] > string1[i] || string1[i] == '\0')
 			return (-1);
 		i++;
 	}

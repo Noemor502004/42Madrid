@@ -1,6 +1,8 @@
 all: libft.a
 
-SRCS = $(wildcard *.c)
+SRCS = ft_atoi.c \
+ft_bzero.c \
+ft
 OBJS = $(SRCS:.c=.o)
 
 libft.a: $(OBJS)
