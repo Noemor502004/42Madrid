@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoomi <yoomi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:54:24 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/04 15:02:44 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/06 21:22:51 by yoomi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strnstr2(char *point, const char *big, const char *lit, size_t len)
 	size_t	j;
 
 	i = 0;
-	while (i < len)
+	while (i < len && big[i])
 	{
 		j = 0;
 		if (big[i] == lit[j])

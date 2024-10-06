@@ -6,7 +6,7 @@
 /*   By: yoomi <yoomi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 16:48:16 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/05 20:27:54 by yoomi            ###   ########.fr       */
+/*   Updated: 2024/10/06 18:53:22 by yoomi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,5 @@ int	ft_strlcat(char *dst, const char *src, size_t size)
 		j++;
 	}
 	dst[i] = '\0';
-	printf("%s", dst);
-	printf("%li", ft_strlen(dst));
 	return (lenght);
 }

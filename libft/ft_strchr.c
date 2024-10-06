@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoomi <yoomi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:34:30 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/04 15:02:18 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/06 18:50:48 by yoomi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strchr(const char *s, int c)
 	const char	*pointer;
 
 	i = 0;
-	while (s[i] != '\0')
+	while ((size_t) i <= ft_strlen(s))
 	{
 		if (s[i] == c)
 		{
