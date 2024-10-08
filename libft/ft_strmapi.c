@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 21:22:08 by yoomi             #+#    #+#             */
-/*   Updated: 2024/10/04 15:02:37 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/08 13:41:53 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		string[i] = f(i, string[i]);
 		i++;
 	}
+	string[i] = s[i];
+	string[i] = f(i, string[i]);
 	return (string);
 }
