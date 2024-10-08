@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 15:05:00 by yoomi             #+#    #+#             */
-/*   Updated: 2024/10/04 15:02:16 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/07 14:12:50 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,14 @@ static	char	**mk_string2(char const *s, char c, char **string)
 		if ((s[i] == c && s[i + 1] != c && i != 0
 				&& (size_t) i != ft_strlen(s) - 1) || s[i + 1] == '\0')
 		{
-			string[j] = ft_calloc(i - k, 1);
+			string[j] = ft_calloc(k + 1, 1);
+			string[j][ft_strlen(string[j])] = '\0';
 			j++;
-			k = i;
+			k = 0;
 		}
 		i++;
+		if(s[i] != c)
+			k++;
 	}
 	return (string);
 }
@@ -76,6 +79,7 @@ static	char	**mk_string(char const *s, char c, char **string, int i)
 		}
 		i++;
 	}
+	j++;
 	string = ft_calloc(j, 1);
 	return (mk_string2(s, c, string));
 }

@@ -3,23 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 08:41:35 by yoomi             #+#    #+#             */
-/*   Updated: 2024/10/04 15:02:01 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/08 09:41:47 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*mk_result(int *n, int *i, char *result, int *temp)
+static char	*mk_result(int n, int *i, char *result, int *temp)
 {
-	if (*n < 0)
+	if (n < 0)
 	{
 		*i += 1;
 		result = ft_calloc(*i + 1, 1);
 		result[0] = '-';
-		*n *= -1;
 		*i = 1;
 		*temp += 1;
 	}
@@ -34,20 +33,26 @@ static char	*mk_result(int *n, int *i, char *result, int *temp)
 static int	write_result(int temp, char *result, int n, int exponent)
 {
 	int	i;
+	int	j;
 
+	j = 1;
 	if (result[0] == '-')
 	{
 		i = 1;
+		j = -1;
 	}
 	else
-	{
 		i = 0;
-	}
 	while (i <= temp)
 	{
-		result[i] = n / exponent + 48;
-		n %= exponent;
-		exponent /= 10;
+		if (i == temp)
+			result[i] = n * j + '0';
+		else
+		{
+			result[i] = n / exponent * j + 48;
+			n %= exponent;
+			exponent /= 10;
+		}
 		i++;
 	}
 	return (i);
@@ -62,9 +67,9 @@ char	*ft_itoa(int n)
 
 	i = 0;
 	temp = n;
-	if (temp < 0)
-		temp *= -1;
-	while (temp > 0)
+	if (n == 0)
+		i++;
+	while (temp != 0)
 	{
 		temp /= 10;
 		i++;
@@ -76,8 +81,7 @@ char	*ft_itoa(int n)
 		exponent *= 10;
 		temp++;
 	}
-	result = mk_result(&n, &i, result, &temp);
+	result = mk_result(n, &i, result, &temp);
 	i = write_result(temp, result, n, exponent);
-	result[i] = '\0';
 	return (result);
 }
