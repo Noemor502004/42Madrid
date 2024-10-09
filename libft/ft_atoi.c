@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:15:14 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/08 13:26:44 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:56:54 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_atoi3(int exponent, const char *nptr, int i)
 	return (exponent);
 }
 
-static int	ft_atoi2(const char *nptr, size_t i, int exponent)
+static int	ft_atoi2(const char *nptr, int i, int exponent)
 {
 	int	result;
 
@@ -46,7 +46,7 @@ static int	ft_atoi2(const char *nptr, size_t i, int exponent)
 
 int	ft_atoi(const char *nptr)
 {
-	size_t	i;
+	int		i;
 	char	first;
 	int		result;
 	int		exponent;

@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 15:05:00 by yoomi             #+#    #+#             */
-/*   Updated: 2024/10/09 10:57:41 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:07:57 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ static	char	**mk_string2(char const *s, char c, char **string)
 		i++;
 		if (s[i] != c)
 			k++;
-		//string[j] = ft_calloc(1, sizeof(char));
 		string[j] = "\0";
 	}
 	return (string);
