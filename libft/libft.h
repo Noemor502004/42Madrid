@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:11:46 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/07 12:28:29 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:42:38 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n);
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
-int		ft_strlcat(char *dst, const char *src, size_t size);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
 
 int		ft_toupper(int c);
 

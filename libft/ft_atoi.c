@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:15:14 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/09 16:12:34 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/09 17:42:05 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int	ft_atoi(const char *nptr)
 		i++;
 	}
 	result = mk_int(nptr, i, exponent);
-	result = 0;
 	if (first == '-')
 		result *= -1;
 	return (result);

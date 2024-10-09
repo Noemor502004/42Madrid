@@ -6,114 +6,58 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 15:05:00 by yoomi             #+#    #+#             */
-/*   Updated: 2024/10/09 16:07:26 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/09 17:27:21 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**recursive_free(char **string, int index)
+static int	ft_count_words(const char *s, char c)
 {
-	int	i;
+	int	count;
+	int	in_word;
 
-	i = 0;
-	while (i <= index)
+	count = 0;
+	in_word = 0;
+	while (*s)
 	{
-		free(string[i]);
-		i++;
+		if (*s != c && in_word == 0)
+		{
+			in_word = 1;
+			count++;
+		}
+		else if (*s == c)
+			in_word = 0;
+		s++;
 	}
-	free(string);
-	return (0);
+	return (count);
 }
 
-static	char	**write_string(char	const *s, char c, char **string)
+char	**ft_split(const char *s, char c)
 {
-	int	i;
-	int	j;
-	int	k;
+	char		**result;
+	int			i;
+	int			wc;
+	const char	*start;
 
-	j = 0;
-	k = 0;
+	wc = ft_count_words(s, c);
+	result = malloc((wc + 1) * sizeof(char *));
+	if (!result)
+		return (NULL);
 	i = 0;
-	while (s[i] != '\0')
+	while (*s)
 	{
-		if (s[i] != c)
+		if (*s != c)
 		{
-			string[j][k] = s[i];
-			k++;
+			start = s;
+			while (*s && *s != c)
+				s++;
+			result[i] = ft_substr(start, 0, s - start);
+			i++;
 		}
-		else if (s[i + 1] != c && i != 0 && (size_t) i != ft_strlen(s) - 1)
-		{
-			string[j][k] = '\0';
-			j++;
-			k = 0;
-		}
-		i++;
+		else
+			s++;
 	}
-	return (string);
-}
-
-static	char	**mk_string2(char const *s, char c, char **string)
-{
-	int	k;
-	int	i;
-	int	j;
-
-	k = 0;
-	i = 0;
-	j = 0;
-	while (s[i] != '\0')
-	{
-		if ((s[i] == c && s[i + 1] != c && i != 0
-				&& (size_t) i != ft_strlen(s) - 1) || s[i + 1] == '\0')
-		{
-			string[j] = ft_calloc(k + 1, sizeof(char));
-			if (string[j] == 0)
-				return (recursive_free(string, j));
-			string[j][ft_strlen(string[j])] = '\0';
-			j++;
-			k = 0;
-		}
-		i++;
-		if (s[i] != c)
-			k++;
-		string[j] = "\0";
-	}
-	return (string);
-}
-
-static	char	**mk_string(char const *s, char c, char **string, int i)
-{
-	int	j;
-
-	j = 0;
-	while (s[i] != '\0')
-	{
-		if ((s[i] == c && s[i + 1] != c && i != 0
-				&& (size_t) i != ft_strlen(s) - 1) || s[i + 1] == '\0')
-		{
-			j++;
-		}
-		i++;
-	}
-	j++;
-	string = ft_calloc(j, sizeof(char *));
-	if (string == 0)
-		return (recursive_free(string, -1));
-	return (mk_string2(s, c, string));
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**string;
-	char	*string2;
-	int		i;
-
-	i = 0;
-	string = 0;
-	string2 = ft_strtrim(s, &c);
-	string = mk_string(string2, c, string, i);
-	if (string == 0)
-		return (0);
-	return (write_string(string2, c, string));
+	result[i] = NULL;
+	return (result);
 }
