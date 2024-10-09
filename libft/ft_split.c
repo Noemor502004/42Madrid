@@ -6,11 +6,25 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 15:05:00 by yoomi             #+#    #+#             */
-/*   Updated: 2024/10/09 11:07:57 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:07:26 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static char	**recursive_free(char **string, int index)
+{
+	int	i;
+
+	i = 0;
+	while (i <= index)
+	{
+		free(string[i]);
+		i++;
+	}
+	free(string);
+	return (0);
+}
 
 static	char	**write_string(char	const *s, char c, char **string)
 {
@@ -54,6 +68,8 @@ static	char	**mk_string2(char const *s, char c, char **string)
 				&& (size_t) i != ft_strlen(s) - 1) || s[i + 1] == '\0')
 		{
 			string[j] = ft_calloc(k + 1, sizeof(char));
+			if (string[j] == 0)
+				return (recursive_free(string, j));
 			string[j][ft_strlen(string[j])] = '\0';
 			j++;
 			k = 0;
@@ -82,6 +98,8 @@ static	char	**mk_string(char const *s, char c, char **string, int i)
 	}
 	j++;
 	string = ft_calloc(j, sizeof(char *));
+	if (string == 0)
+		return (recursive_free(string, -1));
 	return (mk_string2(s, c, string));
 }
 
@@ -95,5 +113,7 @@ char	**ft_split(char const *s, char c)
 	string = 0;
 	string2 = ft_strtrim(s, &c);
 	string = mk_string(string2, c, string, i);
+	if (string == 0)
+		return (0);
 	return (write_string(string2, c, string));
 }

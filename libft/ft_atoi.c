@@ -6,13 +6,13 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:15:14 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/09 11:56:54 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:12:34 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_atoi3(int exponent, const char *nptr, int i)
+static int	mk_exponent(int exponent, const char *nptr, int i)
 {
 	int	bool;
 
@@ -30,7 +30,7 @@ static int	ft_atoi3(int exponent, const char *nptr, int i)
 	return (exponent);
 }
 
-static int	ft_atoi2(const char *nptr, int i, int exponent)
+static int	mk_int(const char *nptr, int i, int exponent)
 {
 	int	result;
 
@@ -55,14 +55,15 @@ int	ft_atoi(const char *nptr)
 	i = 0;
 	if (nptr[0] == '-' || nptr[0] == '+' || nptr[0] == '0')
 		i++;
-	exponent = ft_atoi3(exponent, nptr, i);
+	exponent = mk_exponent(exponent, nptr, i);
 	i = 0;
 	if (nptr[0] == '-' || nptr[0] == '+' || nptr[0] == '0')
 	{
 		first = nptr[0];
 		i++;
 	}
-	result = ft_atoi2(nptr, i, exponent);
+	result = mk_int(nptr, i, exponent);
+	result = 0;
 	if (first == '-')
 		result *= -1;
 	return (result);
