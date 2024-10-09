@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 15:05:00 by yoomi             #+#    #+#             */
-/*   Updated: 2024/10/08 13:28:55 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/09 10:57:41 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static	char	**mk_string2(char const *s, char c, char **string)
 		if ((s[i] == c && s[i + 1] != c && i != 0
 				&& (size_t) i != ft_strlen(s) - 1) || s[i + 1] == '\0')
 		{
-			string[j] = ft_calloc(k + 1, 1);
+			string[j] = ft_calloc(k + 1, sizeof(char));
 			string[j][ft_strlen(string[j])] = '\0';
 			j++;
 			k = 0;
@@ -61,6 +61,8 @@ static	char	**mk_string2(char const *s, char c, char **string)
 		i++;
 		if (s[i] != c)
 			k++;
+		//string[j] = ft_calloc(1, sizeof(char));
+		string[j] = "\0";
 	}
 	return (string);
 }
@@ -80,7 +82,7 @@ static	char	**mk_string(char const *s, char c, char **string, int i)
 		i++;
 	}
 	j++;
-	string = ft_calloc(j, 1);
+	string = ft_calloc(j, sizeof(char *));
 	return (mk_string2(s, c, string));
 }
 
