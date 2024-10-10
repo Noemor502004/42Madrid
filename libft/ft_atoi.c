@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:15:14 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/09 17:42:05 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/10 17:16:06 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,16 @@ int	ft_atoi(const char *nptr)
 
 	exponent = 1;
 	i = 0;
-	if (nptr[0] == '-' || nptr[0] == '+' || nptr[0] == '0')
+	first = '\0';
+	while ((nptr[i] >= '\a' && nptr[i] <= '\r') || nptr[i] == ' '
+		|| (nptr[i] == '+' && nptr[i + 1] >= '0' && nptr[i + 1] <= '9'))
 		i++;
-	exponent = mk_exponent(exponent, nptr, i);
-	i = 0;
-	if (nptr[0] == '-' || nptr[0] == '+' || nptr[0] == '0')
+	if (nptr[i] == '-' && (nptr[i + 1] >= '0' && nptr[i + 1] <= '9'))
 	{
-		first = nptr[0];
+		first = '-';
 		i++;
 	}
+	exponent = mk_exponent(exponent, nptr, i);
 	result = mk_int(nptr, i, exponent);
 	if (first == '-')
 		result *= -1;
