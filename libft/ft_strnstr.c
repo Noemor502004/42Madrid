@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoomi <yoomi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/26 17:54:24 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/06 21:22:51 by yoomi            ###   ########.fr       */
+/*   Created: 2024/10/18 17:22:14 by nmorgado          #+#    #+#             */
+/*   Updated: 2024/10/18 17:50:15 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr2(char *point, const char *big, const char *lit, size_t len)
+static	char	*ft_2(char *point, const char *big, const char *lit, size_t len)
 {
 	size_t	i;
 	size_t	j;
@@ -52,5 +52,5 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	else
 		pointer = 0;
-	return (ft_strnstr2(pointer, big, little, len));
+	return (ft_2(pointer, big, little, len));
 }

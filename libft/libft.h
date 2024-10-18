@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 15:11:46 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/09 16:42:38 by nmorgado         ###   ########.fr       */
+/*   Created: 2024/10/18 17:18:12 by nmorgado          #+#    #+#             */
+/*   Updated: 2024/10/18 17:40:02 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
+#ifndef LIBFT_H
+# define LIBFT_H
+
+# include <stdlib.h>
+# include <unistd.h>
 
 int		ft_isalpha(int c);
 
@@ -80,3 +83,4 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 
 void	ft_putnbr_fd(int n, int fd);
+#endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/04 14:13:42 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/08 10:32:58 by nmorgado         ###   ########.fr       */
+/*   Created: 2024/10/18 17:28:07 by nmorgado          #+#    #+#             */
+/*   Updated: 2024/10/18 17:28:15 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

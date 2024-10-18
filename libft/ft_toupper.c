@@ -5,10 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/25 18:13:38 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/04 15:02:56 by nmorgado         ###   ########.fr       */
+/*   Created: 2024/10/18 17:18:35 by nmorgado          #+#    #+#             */
+/*   Updated: 2024/10/18 17:19:26 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_toupper(int c)
 {
