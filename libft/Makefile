@@ -6,15 +6,15 @@
 #    By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 17:17:57 by nmorgado          #+#    #+#              #
-#    Updated: 2024/10/21 17:31:46 by nmorgado         ###   ########.fr        #
+#    Updated: 2024/10/21 17:45:13 by nmorgado         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-all: libft.a
-
 CC = cc
 
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
+
+NAME = libft.a
 
 SRCS = ft_atoi.c \
 ft_bzero.c \
@@ -49,20 +49,22 @@ ft_strrchr.c \
 ft_strtrim.c \
 ft_substr.c \
 ft_tolower.c \
-ft_toupper.c \
+ft_toupper.c
 
 OBJS = $(SRCS:.c=.o)
 
-libft.a: $(OBJS)
+all: $(NAME)
+
+$(NAME): $(OBJS)
 	ar rcs libft.a $(OBJS)
 
 %.o: %.c
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -rf *.o
 
 fclean:
-	rm -rf *.o libft.a
+	rm -rf *.o $(NAME)
 
 re: fclean all
