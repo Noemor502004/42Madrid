@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+         #
+#    By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 17:17:57 by nmorgado          #+#    #+#              #
-#    Updated: 2024/10/18 17:17:59 by nmorgado         ###   ########.fr        #
+#    Updated: 2024/10/21 17:31:46 by nmorgado         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ ft_strrchr.c \
 ft_strtrim.c \
 ft_substr.c \
 ft_tolower.c \
+ft_toupper.c \
 
 OBJS = $(SRCS:.c=.o)
 
