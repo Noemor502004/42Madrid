@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:21:24 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/18 17:21:29 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:58:41 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	start = startcut(s1, set);
 	end = endcut(s1, set);
 	string = ft_calloc(end - start + 2, 1);
+	if (!string)
+		return (NULL);
 	ft_strlcpy(string, s1 + start, end - start + 2);
 	string[ft_strlen(string)] = '\0';
 	return (string);

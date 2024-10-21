@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:31:28 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/18 17:31:30 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:18:29 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static char	*mk_result(int n, int *i, char *result, int *temp)
 	{
 		*i += 1;
 		result = ft_calloc(*i + 1, 1);
+		if (!result)
+			return (NULL);
 		result[0] = '-';
 		*i = 1;
 		*temp += 1;
@@ -25,6 +27,8 @@ static char	*mk_result(int n, int *i, char *result, int *temp)
 	else
 	{
 		result = ft_calloc(*i + 1, 1);
+		if (!result)
+			return (NULL);
 		*i = 0;
 	}
 	return (result);
@@ -82,6 +86,7 @@ char	*ft_itoa(int n)
 		temp++;
 	}
 	result = mk_result(n, &i, result, &temp);
-	i = write_result(temp, result, n, exponent);
+	if (result)
+		i = write_result(temp, result, n, exponent);
 	return (result);
 }
