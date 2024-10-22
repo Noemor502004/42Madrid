@@ -58,13 +58,10 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
 clean:
-	rm -rf *.o
+	rm -rf $(OBJS)
 
 fclean:
-	rm -rf *.o $(NAME)
+	rm -rf $(OBJS) $(NAME)
 
 re: fclean all
