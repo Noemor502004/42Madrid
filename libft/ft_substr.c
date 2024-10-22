@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: yoomi <yoomi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:21:00 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/21 15:56:55 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/22 20:38:38 by yoomi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,18 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t			i;
 	unsigned int	j;
 
-	string = malloc((int) len + 1);
+	if (start >= ft_strlen(s))
+	{
+		string = malloc(1);
+		string[0] = '\0';
+		return (string);
+	}
+	string = malloc(len + 1);
 	if (!string)
 		return (NULL);
 	i = 0;
-	j = (int) start;
-	while (i < len)
+	j = start;
+	while (i < len && s[start + i] != '\0')
 	{
 		string[i] = s[j];
 		i++;
