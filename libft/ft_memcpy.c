@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoomi <yoomi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:30:27 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/22 17:16:56 by yoomi            ###   ########.fr       */
+/*   Updated: 2024/10/24 18:17:42 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	string = (char *) src;
 	string2 = (char *) dest;
 	i = 0;
+	if (n == 0 || dest == src)
+		return (dest);
 	while (i < n)
 	{
 		string2[i] = string[i];
