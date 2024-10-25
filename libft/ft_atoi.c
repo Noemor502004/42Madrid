@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:33:58 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/18 17:33:59 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/25 16:46:43 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int	ft_atoi(const char *nptr)
 		first = '-';
 		i++;
 	}
+	while (nptr[i] == '0')
+		i++;
 	exponent = mk_exponent(exponent, nptr, i);
 	result = mk_int(nptr, i, exponent);
 	if (first == '-')
