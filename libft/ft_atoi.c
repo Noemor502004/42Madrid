@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:33:58 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/10/25 16:46:43 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/10/25 16:55:18 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ft_atoi(const char *nptr)
 	exponent = 1;
 	i = 0;
 	first = '\0';
-	while ((nptr[i] >= '\a' && nptr[i] <= '\r') || nptr[i] == ' '
+	while ((nptr[i] >= '\a' + 2 && nptr[i] <= '\r') || nptr[i] == ' '
 		|| (nptr[i] == '+' && nptr[i + 1] >= '0' && nptr[i + 1] <= '9'))
 		i++;
 	if (nptr[i] == '-' && (nptr[i + 1] >= '0' && nptr[i + 1] <= '9'))
