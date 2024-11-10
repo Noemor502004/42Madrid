@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 09:49:03 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/11/10 13:08:46 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/11/10 18:38:35 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,26 +48,91 @@ void	deal_with_str(va_list args, char *string, int *i)
 	}
 }
 
+void	deal_with_char(va_list args, char *string, int *i, int perbool)
+{
+	char	*string2;
+	char	charac;
+	int		charac_int;
+	int		size;
+
+	size = ft_strlen(string - *i);
+	string2 = ft_calloc(size + 1, sizeof(char));
+	ft_strlcpy(string2, string - *i, size + 1);
+	if (perbool == 0)
+	{
+		charac_int = va_arg(args, int);
+		charac = charac_int;
+	}
+	else
+		charac = '%';
+	ft_realloc(string - *i, size + 2);
+	ft_strlcpy(string, string2, size + 1);
+	*(string + *i) = charac;
+}
+
+void	deal_with_int(va_list args, char *string, int *i)
+{
+	char	*string2;
+	int		integer;
+	char	*str_int;
+	int		size;
+
+	size = ft_strlen(string - *i);
+	string2 = ft_calloc(size + 1, sizeof(char));
+	ft_strlcpy(string2, string - *i, size + 1);
+	integer = va_arg(args, int);
+	str_int = ft_itoa(integer);
+	ft_realloc(string - *i, size + ft_strlen(str_int) + 1);
+	ft_strlcpy(string, string2, size + 1);
+	ft_strlcat(string, str_int, ft_strlen(str_int) + size + 1);
+	i += ft_strlen(str_int);
+	free(str_int);
+}
+//Por arreglar
+void	deal_with_unsig(va_list args, char *string, int *i)
+{
+	char			*string2;
+	int	integer;
+	char			*str_int;
+	int				size;
+
+	size = ft_strlen(string - *i);
+	string2 = ft_calloc(size + 1, sizeof(char));
+	ft_strlcpy(string2, string - *i, size + 1);
+	integer = va_arg(args, int);
+	if (integer >= 0)
+		str_int = ft_itoa(integer);
+	else
+		str_int = ft_ltoa(4294967295 + integer);
+	ft_realloc(string - *i, size + ft_strlen(str_int) + 1);
+	ft_strlcpy(string, string2, size + 1);
+	ft_strlcat(string, str_int, ft_strlen(str_int) + size + 1);
+	i += ft_strlen(str_int);
+	free(str_int);
+}
+
 char	*deal_with_it(char const type, va_list args, char *string, int *i)
 {
 	if (type == 's')
 		deal_with_str(args, string, i);
-	/*else if (type == 'c')
-		deal_with_char(args, string);
+	else if (type == 'c')
+		deal_with_char(args, string, i, 0);
 	else if (type == 'd')
-		deal_with_digit(args, string);
+		deal_with_int(args, string, i);
 	else if (type == 'i')
-		deal_with_int(args, string);
-	else if (type == 'p')
-		deal_with_void(args, string);
+		deal_with_int(args, string, i);
+	/*else if (type == 'p')
+		deal_with_void(args, string);*/
+	//Por arreglar
 	else if (type == 'u')
-		deal_with_unsig(args, string);
-	else if (type == 'x')
+		deal_with_unsig(args, string, i);
+	//En hexadecimal, en lugar de usar 2 funciones diferentes, podria usar un booleano
+	/*else if (type == 'x')
 		deal_with_hex_low(args, string);
 	else if (type == 'X')
-		deal_with_hex_up(args, string);
+		deal_with_hex_up(args, string);*/
 	else if (type == '%')
-		deal_with_per(args, string);*/
+		deal_with_char(args, string, i, 1);
 	return (string + *i);
 }
 
