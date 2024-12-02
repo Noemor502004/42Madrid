@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 09:49:03 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/12/02 13:01:33 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:57:36 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "libft.h"
 #include <unistd.h>
 #include "ft_printf.h"
-#include <stdio.h>
-#include <limits.h>
 
 int	deal_with_hex(va_list args, char **string, int cap_bool)
 {
