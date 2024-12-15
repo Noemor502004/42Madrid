@@ -6,7 +6,7 @@
 #    By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 17:17:57 by nmorgado          #+#    #+#              #
-#    Updated: 2024/12/02 13:46:15 by nmorgado         ###   ########.fr        #
+#    Updated: 2024/12/02 14:29:10 by nmorgado         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,8 @@ ft_printf.c \
 ft_ltoa.c \
 ft_str_reverse.c \
 ft_realloc.c \
-ft_printf_aux.c
+ft_printf_aux.c \
+ft_printf_aux2.c
 
 OBJS = $(SRCS:.c=.o)
 

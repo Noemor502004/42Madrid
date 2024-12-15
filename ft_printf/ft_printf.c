@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 09:49:03 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/12/02 13:57:36 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/12/12 11:05:12 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,49 +15,8 @@
 #include <unistd.h>
 #include "ft_printf.h"
 
-int	deal_with_hex(va_list args, char **string, int cap_bool)
+int	redimensionate_void(char **string, char *string2, char *string3)
 {
-	char	*string2;
-	int		integer;
-	char	*str_int;
-
-	string2 = 0;
-	integer = va_arg(args, int);
-	str_int = make_hex(integer, cap_bool);
-	if (str_int == 0)
-	{
-		free(*string);
-		return (-1);
-	}
-	string2 = ft_calloc(ft_strlen(*string) + 1, sizeof(char));
-	if (!string2)
-	{
-		free(*string);
-		return (-1);
-	}
-	ft_strlcpy(string2, *string, ft_strlen(*string) + 1);
-	ft_realloc(string, ft_strlen(string2) + ft_strlen(str_int) + 1);
-	if (!*string)
-	{
-		free(string2);
-		return (-1);
-	}
-	ft_strlcpy(*string, string2, 1 + ft_strlen(string2));
-	ft_strlcat(*string, str_int, ft_strlen(*string) + ft_strlen(str_int) + 1);
-	free(string2);
-	return (0);
-}
-
-int	deal_with_void(va_list args, char **string)
-{
-	void			*nothing;
-	char			*string2;
-	unsigned long	addres;
-	char			*string3;
-
-	nothing = va_arg(args, void *);
-	addres = (unsigned long)nothing;
-	string3 = make_hex(addres, 0);
 	string2 = ft_calloc(ft_strlen(*string) + 1, sizeof(char));
 	if (!string2)
 	{
@@ -79,9 +38,46 @@ int	deal_with_void(va_list args, char **string)
 	return (0);
 }
 
+int	deal_with_hex(va_list args, char **string, int cap_bool)
+{
+	char	*string2;
+	int		integer;
+	char	*str_int;
+
+	string2 = 0;
+	integer = va_arg(args, int);
+	str_int = make_hex(integer, cap_bool);
+	if (str_int == 0)
+	{
+		free(*string);
+		return (-1);
+	}
+	return (redimensionate_hex(string, string2, str_int));
+}
+
+int	deal_with_void(va_list args, char **string)
+{
+	void			*nothing;
+	char			*string2;
+	unsigned long	addres;
+	char			*string3;
+
+	nothing = va_arg(args, void *);
+	addres = (unsigned long)nothing;
+	string3 = make_hex(addres, 0);
+	if (string3 == 0)
+	{
+		free(*string);
+		return (-1);
+	}
+	string2 = "";
+	return (redimensionate_void(string, string2, string3));
+}
+
 int	deal_with_it(char const *type, va_list args, char **string)
 {
 	char	*string2;
+	char	*type_cpy;
 	int		error;
 
 	if (*type == 's')
@@ -102,17 +98,9 @@ int	deal_with_it(char const *type, va_list args, char **string)
 		error = deal_with_char(args, string, 1);
 	if (error == -1)
 		return (error);
-	string2 = ft_calloc(ft_strlen(*string) + 1, sizeof(char));
-	ft_strlcpy(string2, *string, ft_strlen(*string) + 1);
-	ft_realloc(string, ft_strlen(type + 1) + ft_strlen(*string) + 1);
-	if (!string)
-	{
-		free(string2);
-		return (-1);
-	}
-	ft_strlcpy(*string, string2, ft_strlen(string2) + 1);
-	free(string2);
-	return (0);
+	type_cpy = (char *)type;
+	string2 = "";
+	return (redimensionate_it(string, string2, type_cpy));
 }
 
 int	ft_printf(char const *type, ...)

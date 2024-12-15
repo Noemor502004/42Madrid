@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_aux_private.h                            :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 12:38:24 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/12/02 12:44:19 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:31:50 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,11 @@ int		deal_with_int(va_list args, char **string);
 int		deal_with_unsig(va_list args, char **string);
 
 char	*make_hex(unsigned long integer, int cap_bool);
+
+int		redimensionate_hex(char **string, char *string2, char *str_int);
+
+int		redimensionate_void(char **string, char *string2, char *string3);
+
+int	redimensionate_it(char **string, char *string2, char *type);
 
 #endif
