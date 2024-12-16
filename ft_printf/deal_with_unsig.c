@@ -6,12 +6,30 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 09:07:09 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/12/16 09:28:55 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/12/16 10:57:49 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
+
+int	calloc_checks(char *str_int, char *string2, char **string, int size)
+{
+	if (!str_int)
+	{
+		free(string2);
+		free(*string);
+		return (-1);
+	}
+	ft_realloc(string, size + ft_strlen(str_int) + 1);
+	if (!*string)
+	{
+		free(string2);
+		free(str_int);
+		return (-1);
+	}
+	return (0);
+}
 
 int	deal_with_unsig(va_list args, char **string)
 {
@@ -33,19 +51,7 @@ int	deal_with_unsig(va_list args, char **string)
 		str_int = ft_itoa(integer);
 	else
 		str_int = ft_ltoa(4294967296 + integer);
-	if (!str_int)
-	{
-		free(string2);
-		free(*string);
-		return (-1);
-	}
-	ft_realloc(string, size + ft_strlen(str_int) + 1);
-	if (!*string)
-	{
-		free(string2);
-		free(str_int);
-		return (-1);
-	}
+	calloc_checks(str_int, string2, string, size);
 	ft_strlcpy(*string, string2, size + 1);
 	ft_strlcat(*string, str_int, ft_strlen(str_int) + size + 1);
 	free(str_int);
