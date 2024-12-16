@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 12:05:54 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/12/02 12:55:01 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/12/15 19:49:22 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,21 @@
 #include "libft.h"
 #include "unistd.h"
 #include "ft_printf.h"
+
+void	str_write(char *string2, int i, char **string, char *string3)
+{
+	while (string2[i] != '\0')
+	{
+		(*string)[ft_strlen(*string)] = string2[i];
+		i++;
+	}
+	i = 0;
+	while (string3[i] != '\0')
+	{
+		(*string)[ft_strlen(*string)] = string3[i];
+		i++;
+	}
+}
 
 int	deal_with_str(va_list args, char **string)
 {
@@ -38,17 +53,21 @@ int	deal_with_str(va_list args, char **string)
 		free(string2);
 		return (-1);
 	}
-	while (string2[i] != '\0')
+	str_write(string2, i, string, string3);
+	free(string2);
+	return (0);
+}
+
+int	chr_write(char **string, int size, char *string2, char charac)
+{
+	ft_realloc(string, size + 2);
+	if (!*string)
 	{
-		(*string)[ft_strlen(*string)] = string2[i];
-		i++;
+		free(string2);
+		return (-1);
 	}
-	i = 0;
-	while (string3[i] != '\0')
-	{
-		(*string)[ft_strlen(*string)] = string3[i];
-		i++;
-	}
+	ft_strlcpy(*string, string2, size + 1);
+	(*string)[ft_strlen(*string)] = charac;
 	free(string2);
 	return (0);
 }
@@ -75,14 +94,21 @@ int	deal_with_char(va_list args, char **string, int perbool)
 	}
 	else
 		charac = '%';
-	ft_realloc(string, size + 2);
+	return (chr_write(string, size, string2, charac));
+}
+
+int	write_int(char **string, int size, char *str_int, char *string2)
+{
+	ft_realloc(string, size + ft_strlen(str_int) + 1);
 	if (!*string)
 	{
+		free(str_int);
 		free(string2);
 		return (-1);
 	}
 	ft_strlcpy(*string, string2, size + 1);
-	(*string)[ft_strlen(*string)] = charac;
+	ft_strlcat(*string, str_int, ft_strlen(str_int) + size + 1);
+	free(str_int);
 	free(string2);
 	return (0);
 }
@@ -110,18 +136,7 @@ int	deal_with_int(va_list args, char **string)
 		free(*string);
 		return (-1);
 	}
-	ft_realloc(string, size + ft_strlen(str_int) + 1);
-	if (!*string)
-	{
-		free(str_int);
-		free(string2);
-		return (-1);
-	}
-	ft_strlcpy(*string, string2, size + 1);
-	ft_strlcat(*string, str_int, ft_strlen(str_int) + size + 1);
-	free(str_int);
-	free(string2);
-	return (0);
+	return (write_int(string, size, str_int, string2));
 }
 
 int	deal_with_unsig(va_list args, char **string)

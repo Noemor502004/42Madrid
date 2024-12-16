@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 12:38:24 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/12/02 14:31:50 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/12/16 08:41:44 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ int		redimensionate_hex(char **string, char *string2, char *str_int);
 
 int		redimensionate_void(char **string, char *string2, char *string3);
 
-int	redimensionate_it(char **string, char *string2, char *type);
+int		redimensionate_it(char **string, char *string2, char *type);
+
+void	str_write(char *string2, int i, char **string, char *string3);
+
+int		chr_write(char **string, int size, char *string2, char charac);
+
+int		write_int(char **string, int size, char *str_int, char *string2);
 
 #endif
