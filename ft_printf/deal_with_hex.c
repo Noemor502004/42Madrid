@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_aux2.c                                   :+:      :+:    :+:   */
+/*   deal_with_hex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 14:27:19 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/12/15 19:35:22 by nmorgado         ###   ########.fr       */
+/*   Created: 2024/12/16 09:09:27 by nmorgado          #+#    #+#             */
+/*   Updated: 2024/12/16 09:29:09 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,19 @@ int	redimensionate_hex(char **string, char *string2, char *str_int)
 	return (0);
 }
 
-int	redimensionate_it(char **string, char *string2, char *type)
+int	deal_with_hex(va_list args, char **string, int cap_bool)
 {
-	string2 = ft_calloc(ft_strlen(*string) + 1, sizeof(char));
-	ft_strlcpy(string2, *string, ft_strlen(*string) + 1);
-	ft_realloc(string, ft_strlen(type + 1) + ft_strlen(*string) + 1);
-	if (!string)
+	char	*string2;
+	int		integer;
+	char	*str_int;
+
+	string2 = 0;
+	integer = va_arg(args, int);
+	str_int = ft_make_hex(integer, cap_bool);
+	if (str_int == 0)
 	{
-		free(string2);
+		free(*string);
 		return (-1);
 	}
-	ft_strlcpy(*string, string2, ft_strlen(string2) + 1);
-	free(string2);
-	return (0);
+	return (redimensionate_hex(string, string2, str_int));
 }

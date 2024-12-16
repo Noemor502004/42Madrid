@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:18:12 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/12/02 12:03:08 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/12/16 09:04:29 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,6 @@ int		ft_printf(char const *type, ...);
 void	ft_realloc(char **string, int size);
 
 char	*ft_str_reverse(char *str_int);
+
+char	*ft_make_hex(unsigned long integer, int cap_bool);
 #endif
