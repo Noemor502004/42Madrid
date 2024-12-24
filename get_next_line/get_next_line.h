@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:41:16 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/12/23 18:57:18 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/12/24 11:28:19 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,8 @@ char	*get_next_line(int fd);
 void	*fake_calloc(size_t nmemb, size_t size);
 
 void	fake_realloc(char **string, int size);
+
+size_t	fake_strlen(const char *a);
+
+size_t  fake_strlcpy(char *dst, const char *src, size_t size);
 #endif
