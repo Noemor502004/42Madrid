@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:35:07 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/12/24 11:28:40 by nmorgado         ###   ########.fr       */
+/*   Updated: 2024/12/31 10:49:13 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ size_t	fake_strlcpy(char *dst, const char *src, size_t size)
 
 void	fake_realloc(char **string, int size)
 {
-	char	*string2;
-
 	free(*string);
 	*string = fake_calloc(size, sizeof(char));
 }

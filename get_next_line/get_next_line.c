@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:18:47 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/12/24 12:14:20 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/02 15:00:58 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,14 @@ char	*get_next_line(int fd)
 	j = 0;
 	if (rest)
 	{
-		while (rest[i] != '\0' || rest[i] != '\n')
+		while (rest[i] != '\0' && rest[i] != '\n')
 			i++;
 		if (rest[i] != '\n')
 			i++;
-		ret_string = malloc(i * sizeof(char));
+		if (rest[i] == '\n')
+			ret_string = fake_calloc(i, sizeof(char));
+		else
+			ret_string = fake_calloc(i + 11, sizeof(char));
 		if (!ret_string)
 			return (NULL);
 		i = 0;
@@ -49,12 +52,14 @@ char	*get_next_line(int fd)
 				rest[j] = '\0';
 				return (ret_string);
 			}
+			else
+				i++;
 		}
 		free(rest);
 	}
 	else
 	{
-		ret_string = malloc(11 * sizeof(char));
+		ret_string = fake_calloc(11, sizeof(char));
 		if (!ret_string)
 			return (NULL);
 	}
@@ -62,7 +67,7 @@ char	*get_next_line(int fd)
 	bool = 0;
 	while (!bool)
 	{
-		read_resul = malloc(11 * sizeof(char));
+		read_resul = fake_calloc(11, sizeof(char));
 		if (!read_resul)
 		{
 			free(ret_string);
@@ -70,39 +75,23 @@ char	*get_next_line(int fd)
 		}
 		if (read(fd, read_resul, 10) == 0 && fake_strlen(read_resul) == 0)
 		{
-			free(ret_string);
-			free(read_resul);
+			if (ret_string && fake_strlen(ret_string) == 0)
+				free(ret_string);
+			else if (!ret_string)
+				free(ret_string);
+			else
+				return (ret_string);
 			return (NULL);
 		}
+		read_resul[fake_strlen(read_resul)] = '\0';
 		while (read_resul[i] != '\0')
 		{
 			if (read_resul[i] == '\n')
 			{
-				temp_ret_string = malloc(fake_strlen(ret_string) + 1);
-				if (!temp_ret_string)
-				{
-					free(read_resul);
-					free(ret_string);
-					return (NULL);
-				}
-				fake_strlcpy(temp_ret_string, ret_string,
-					fake_strlen(ret_string));
-				free(ret_string);
-				ret_string = malloc((i + 1 + fake_strlen(temp_ret_string))
-						* sizeof(char));
-				if (!ret_string)
-				{
-					free(temp_ret_string);
-					free(read_resul);
-					return (NULL);
-				}
-				fake_strlcpy(ret_string, temp_ret_string,
-					fake_strlen(temp_ret_string) + 1);
-				free(temp_ret_string);
 				bool = 1;
 				ret_string[fake_strlen(ret_string)] = read_resul[i];
 				i++;
-				rest = malloc(fake_strlen(read_resul + i) * sizeof(char));
+				rest = fake_calloc(fake_strlen(read_resul + i), sizeof(char));
 				if (!rest)
 				{
 					free(ret_string);
@@ -115,12 +104,34 @@ char	*get_next_line(int fd)
 					rest[fake_strlen(rest)] = read_resul[i];
 					i++;
 				}
-				rest[i] = '\0';
+			rest[fake_strlen(rest)] = '\0';
 			}
 			else
 				ret_string[fake_strlen(ret_string)] = read_resul[i];
 			i++;
 		}
+		temp_ret_string = fake_calloc(fake_strlen(ret_string) + 1,
+				sizeof(char));
+		if (!temp_ret_string)
+		{
+			free(read_resul);
+			free(ret_string);
+			return (NULL);
+		}
+		fake_strlcpy(temp_ret_string, ret_string,
+			fake_strlen(ret_string) + 1);
+		free(ret_string);
+		ret_string = fake_calloc((i + 1 + fake_strlen(temp_ret_string)),
+				sizeof(char));
+		if (!ret_string)
+		{
+			free(temp_ret_string);
+			free(read_resul);
+			return (NULL);
+		}
+		fake_strlcpy(ret_string, temp_ret_string,
+			fake_strlen(temp_ret_string) + 1);
+		free(temp_ret_string);
 		free(read_resul);
 		i = 0;
 	}
