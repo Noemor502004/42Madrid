@@ -6,11 +6,39 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:18:47 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/02 15:00:58 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/04 13:42:11 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+int	whileread_resul(char *read_resul, int *i, char *ret_string, char **rest)
+{
+	int	bool;
+
+	bool = 0;
+	if (read_resul[*i] == '\n')
+	{
+		bool = 1;
+		ret_string[fake_strlen(ret_string)] = read_resul[*i];
+		*rest = fake_calloc(fake_strlen(read_resul + ++(*i)) + 1,
+				sizeof(char));
+		if (!(*rest))
+		{
+			free(ret_string);
+			free(read_resul);
+			free(ret_string);
+			return (-1);
+		}
+		while (read_resul[*i] != '\0')
+			(*rest)[fake_strlen(*rest)] = read_resul[(*i)++];
+		(*rest)[fake_strlen(*rest)] = '\0';
+	}
+	else
+		ret_string[fake_strlen(ret_string)] = read_resul[*i];
+	(*i)++;
+	return (bool);
+}
 
 char	*get_next_line(int fd)
 {
@@ -19,6 +47,7 @@ char	*get_next_line(int fd)
 	static char	*rest;
 	char		*temp_ret_string;
 	int			bool;
+	int			temp_bool;
 	int			i;
 	int			j;
 
@@ -31,9 +60,9 @@ char	*get_next_line(int fd)
 		if (rest[i] != '\n')
 			i++;
 		if (rest[i] == '\n')
-			ret_string = fake_calloc(i, sizeof(char));
+			ret_string = fake_calloc(i + 2, sizeof(char));
 		else
-			ret_string = fake_calloc(i + 11, sizeof(char));
+			ret_string = fake_calloc(i + 13, sizeof(char));
 		if (!ret_string)
 			return (NULL);
 		i = 0;
@@ -43,7 +72,7 @@ char	*get_next_line(int fd)
 			if (rest[i] == '\n')
 			{
 				i++;
-				while (rest[i] == '\0')
+				while (rest[i] != '\0')
 				{
 					rest[j] = rest[i];
 					i++;
@@ -83,32 +112,13 @@ char	*get_next_line(int fd)
 				return (ret_string);
 			return (NULL);
 		}
-		read_resul[fake_strlen(read_resul)] = '\0';
 		while (read_resul[i] != '\0')
 		{
-			if (read_resul[i] == '\n')
-			{
-				bool = 1;
-				ret_string[fake_strlen(ret_string)] = read_resul[i];
-				i++;
-				rest = fake_calloc(fake_strlen(read_resul + i), sizeof(char));
-				if (!rest)
-				{
-					free(ret_string);
-					free(read_resul);
-					free(ret_string);
-					return (NULL);
-				}
-				while (read_resul[i] != '\0')
-				{
-					rest[fake_strlen(rest)] = read_resul[i];
-					i++;
-				}
-			rest[fake_strlen(rest)] = '\0';
-			}
-			else
-				ret_string[fake_strlen(ret_string)] = read_resul[i];
-			i++;
+			temp_bool = whileread_resul(read_resul, &i, ret_string, &rest);
+			if (temp_bool == -1)
+				return (NULL);
+			else if (temp_bool > bool)
+				bool = temp_bool;
 		}
 		temp_ret_string = fake_calloc(fake_strlen(ret_string) + 1,
 				sizeof(char));
@@ -137,8 +147,3 @@ char	*get_next_line(int fd)
 	}
 	return (ret_string);
 }
-//Hola que
-//tal
-//bien
-//Hola que\nt
-//al\nbien#EOF
