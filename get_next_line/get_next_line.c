@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:18:47 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/04 13:42:11 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:30:27 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,74 @@ int	whileread_resul(char *read_resul, int *i, char *ret_string, char **rest)
 	return (bool);
 }
 
+char	*whilebool(char **read_resul, char **ret_string, int fd, char **rest)
+{
+	int		bool;
+	int		temp_bool;
+	int		i;
+	char	*temp_ret_string;
+
+	i = 0;
+	bool = 0;
+	while (!bool)
+	{
+		*read_resul = fake_calloc(11, sizeof(char));
+		if (!(*read_resul))
+		{
+			free(*ret_string);
+			return (NULL);
+		}
+		if (read(fd, *read_resul, 10) == 0 && fake_strlen(*read_resul) == 0)
+		{
+			if (*ret_string && fake_strlen(*ret_string) == 0)
+				free(*ret_string);
+			else if (!ret_string)
+				free(*ret_string);
+			else
+				return (*ret_string);
+			return (NULL);
+		}
+		while ((*read_resul)[i] != '\0')
+		{
+			temp_bool = whileread_resul(*read_resul, &i, *ret_string, rest);
+			if (temp_bool == -1)
+				return (NULL);
+			else if (temp_bool > bool)
+				bool = temp_bool;
+		}
+		temp_ret_string = fake_calloc(fake_strlen(*ret_string) + 1,
+				sizeof(char));
+		if (!temp_ret_string)
+		{
+			free(*read_resul);
+			free(*ret_string);
+			return (NULL);
+		}
+		fake_strlcpy(temp_ret_string, *ret_string,
+			fake_strlen(*ret_string) + 1);
+		free(*ret_string);
+		*ret_string = fake_calloc((i + 1 + fake_strlen(temp_ret_string)),
+				sizeof(char));
+		if (!(*ret_string))
+		{
+			free(temp_ret_string);
+			free(*read_resul);
+			return (NULL);
+		}
+		fake_strlcpy(*ret_string, temp_ret_string,
+			fake_strlen(temp_ret_string) + 1);
+		free(temp_ret_string);
+		free(*read_resul);
+		i = 0;
+	}
+	return (*ret_string);
+}
+
 char	*get_next_line(int fd)
 {
 	char		*ret_string;
 	char		*read_resul;
 	static char	*rest;
-	char		*temp_ret_string;
-	int			bool;
-	int			temp_bool;
 	int			i;
 	int			j;
 
@@ -92,58 +152,7 @@ char	*get_next_line(int fd)
 		if (!ret_string)
 			return (NULL);
 	}
-	i = 0;
-	bool = 0;
-	while (!bool)
-	{
-		read_resul = fake_calloc(11, sizeof(char));
-		if (!read_resul)
-		{
-			free(ret_string);
-			return (NULL);
-		}
-		if (read(fd, read_resul, 10) == 0 && fake_strlen(read_resul) == 0)
-		{
-			if (ret_string && fake_strlen(ret_string) == 0)
-				free(ret_string);
-			else if (!ret_string)
-				free(ret_string);
-			else
-				return (ret_string);
-			return (NULL);
-		}
-		while (read_resul[i] != '\0')
-		{
-			temp_bool = whileread_resul(read_resul, &i, ret_string, &rest);
-			if (temp_bool == -1)
-				return (NULL);
-			else if (temp_bool > bool)
-				bool = temp_bool;
-		}
-		temp_ret_string = fake_calloc(fake_strlen(ret_string) + 1,
-				sizeof(char));
-		if (!temp_ret_string)
-		{
-			free(read_resul);
-			free(ret_string);
-			return (NULL);
-		}
-		fake_strlcpy(temp_ret_string, ret_string,
-			fake_strlen(ret_string) + 1);
-		free(ret_string);
-		ret_string = fake_calloc((i + 1 + fake_strlen(temp_ret_string)),
-				sizeof(char));
-		if (!ret_string)
-		{
-			free(temp_ret_string);
-			free(read_resul);
-			return (NULL);
-		}
-		fake_strlcpy(ret_string, temp_ret_string,
-			fake_strlen(temp_ret_string) + 1);
-		free(temp_ret_string);
-		free(read_resul);
-		i = 0;
-	}
+	if (whilebool(&read_resul, &ret_string, fd, &rest) == NULL)
+		return (NULL);
 	return (ret_string);
 }
