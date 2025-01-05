@@ -6,19 +6,15 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:18:47 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/05 13:04:04 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/05 17:06:36 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ifrest(char **rest, char **ret_string)
+int	ifrest(char **rest, char **ret_string, int i)
 {
-	int	i;
-	int	j;
-
 	i = 0;
-	j = 0;
 	while ((*rest)[i] != '\0' && (*rest)[i] != '\n')
 		i++;
 	if ((*rest)[i] != '\n')
@@ -35,18 +31,11 @@ int	ifrest(char **rest, char **ret_string)
 		(*ret_string)[i] = (*rest)[i];
 		if ((*rest)[i] == '\n')
 		{
-			i++;
-			while ((*rest)[i] != '\0')
-			{
-				(*rest)[j] = (*rest)[i];
-				i++;
-				j++;
-			}
-			(*rest)[j] = '\0';
+			while ((*rest)[i++] != '\0')
+				(*rest)[i - 1] = (*rest)[i];
 			return (1);
 		}
-		else
-			i++;
+		i++;
 	}
 	free(*rest);
 	return (0);
@@ -86,22 +75,24 @@ char	*whilebool(char **read_resul, char **ret_string, int fd, char **rest)
 	int		temp_bool;
 	int		i;
 	char	*temp_ret_string;
+	int		read_exit;
 
-	i = 0;
 	bool = 0;
 	while (!bool)
 	{
+		i = 0;
 		*read_resul = fake_calloc(11, sizeof(char));
 		if (!(*read_resul))
 		{
 			free(*ret_string);
 			return (NULL);
 		}
-		if (read(fd, *read_resul, 10) == 0 && fake_strlen(*read_resul) == 0)
+		read_exit = read(fd, *read_resul, 10);
+		if (read_exit < 1 && fake_strlen(*read_resul) == 0)
 		{
-			if (*ret_string && fake_strlen(*ret_string) == 0)
-				free(*ret_string);
-			else if (!ret_string)
+			free(*read_resul);
+			if ((*ret_string && fake_strlen(*ret_string) == 0)
+				|| (!(*ret_string)))
 				free(*ret_string);
 			else
 				return (*ret_string);
@@ -115,33 +106,14 @@ char	*whilebool(char **read_resul, char **ret_string, int fd, char **rest)
 			else if (temp_bool > bool)
 				bool = temp_bool;
 		}
-		temp_ret_string = fake_calloc(fake_strlen(*ret_string) + 1,
-				sizeof(char));
-		if (!temp_ret_string)
-		{
-			free(*read_resul);
-			free(*ret_string);
+		if (resize_ret_string(&temp_ret_string, ret_string, read_resul, i)
+			== -1)
 			return (NULL);
-		}
-		fake_strlcpy(temp_ret_string, *ret_string,
-			fake_strlen(*ret_string) + 1);
-		free(*ret_string);
-		*ret_string = fake_calloc((i + 1 + fake_strlen(temp_ret_string)),
-				sizeof(char));
-		if (!(*ret_string))
-		{
-			free(temp_ret_string);
-			free(*read_resul);
-			return (NULL);
-		}
-		fake_strlcpy(*ret_string, temp_ret_string,
-			fake_strlen(temp_ret_string) + 1);
-		free(temp_ret_string);
-		free(*read_resul);
-		i = 0;
 	}
 	return (*ret_string);
 }
+
+//Esta función es la principal, llama al resto de funciones que hace todo
 
 char	*get_next_line(int fd)
 {
@@ -149,10 +121,11 @@ char	*get_next_line(int fd)
 	char		*read_resul;
 	static char	*rest;
 	int			rest_exit;
+	int			i;
 
 	if (rest)
 	{
-		rest_exit = ifrest(&rest, &ret_string);
+		rest_exit = ifrest(&rest, &ret_string, i);
 		if (rest_exit == -1)
 			return (NULL);
 		else if (rest_exit == 1)
