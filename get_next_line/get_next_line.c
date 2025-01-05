@@ -6,11 +6,51 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:18:47 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/05 12:30:27 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/05 13:04:04 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+int	ifrest(char **rest, char **ret_string)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while ((*rest)[i] != '\0' && (*rest)[i] != '\n')
+		i++;
+	if ((*rest)[i] != '\n')
+		i++;
+	if ((*rest)[i] == '\n')
+		*ret_string = fake_calloc(i + 2, sizeof(char));
+	else
+		*ret_string = fake_calloc(i + 13, sizeof(char));
+	if (!(*ret_string))
+		return (-1);
+	i = 0;
+	while ((*rest)[i] != '\0')
+	{
+		(*ret_string)[i] = (*rest)[i];
+		if ((*rest)[i] == '\n')
+		{
+			i++;
+			while ((*rest)[i] != '\0')
+			{
+				(*rest)[j] = (*rest)[i];
+				i++;
+				j++;
+			}
+			(*rest)[j] = '\0';
+			return (1);
+		}
+		else
+			i++;
+	}
+	free(*rest);
+	return (0);
+}
 
 int	whileread_resul(char *read_resul, int *i, char *ret_string, char **rest)
 {
@@ -108,43 +148,15 @@ char	*get_next_line(int fd)
 	char		*ret_string;
 	char		*read_resul;
 	static char	*rest;
-	int			i;
-	int			j;
+	int			rest_exit;
 
-	i = 0;
-	j = 0;
 	if (rest)
 	{
-		while (rest[i] != '\0' && rest[i] != '\n')
-			i++;
-		if (rest[i] != '\n')
-			i++;
-		if (rest[i] == '\n')
-			ret_string = fake_calloc(i + 2, sizeof(char));
-		else
-			ret_string = fake_calloc(i + 13, sizeof(char));
-		if (!ret_string)
+		rest_exit = ifrest(&rest, &ret_string);
+		if (rest_exit == -1)
 			return (NULL);
-		i = 0;
-		while (rest[i] != '\0')
-		{
-			ret_string[i] = rest[i];
-			if (rest[i] == '\n')
-			{
-				i++;
-				while (rest[i] != '\0')
-				{
-					rest[j] = rest[i];
-					i++;
-					j++;
-				}
-				rest[j] = '\0';
-				return (ret_string);
-			}
-			else
-				i++;
-		}
-		free(rest);
+		else if (rest_exit == 1)
+			return (ret_string);
 	}
 	else
 	{
