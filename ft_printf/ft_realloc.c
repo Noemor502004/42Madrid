@@ -6,11 +6,11 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:42:09 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/12/02 13:43:29 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:47:39 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 void	ft_realloc(char **string, int size)
 {

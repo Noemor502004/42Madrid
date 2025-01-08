@@ -6,11 +6,10 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 12:05:54 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/12/16 09:29:00 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:48:02 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
 
 static int	write_int(char **string, int size, char *str_int, char *string2)

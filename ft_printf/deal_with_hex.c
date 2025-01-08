@@ -6,11 +6,10 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 09:09:27 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/12/16 09:29:09 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:46:33 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
 
 int	redimensionate_hex(char **string, char *string2, char *str_int)

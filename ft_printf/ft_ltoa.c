@@ -6,11 +6,11 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:31:28 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/11/10 18:32:07 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:46:57 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 static char	*mk_result(int *i, char *result)
 {

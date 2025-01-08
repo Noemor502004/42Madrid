@@ -6,11 +6,10 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 09:49:03 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/12/16 09:28:11 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:47:32 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
 
 static int	redimensionate_it(char **string, char *string2, char *type)

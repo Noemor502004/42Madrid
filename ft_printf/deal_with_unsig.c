@@ -6,11 +6,10 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 09:07:09 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/12/16 10:57:49 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:48:05 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
 
 int	calloc_checks(char *str_int, char *string2, char **string, int size)

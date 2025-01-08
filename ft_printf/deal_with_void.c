@@ -6,11 +6,10 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:27:19 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/12/16 09:49:11 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:48:06 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
 
 static int	redimensionate_void(char **string, char *string2, char *string3)

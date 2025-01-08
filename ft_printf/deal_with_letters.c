@@ -6,11 +6,10 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 08:50:24 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/12/16 09:27:47 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:48:04 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
 
 static void	str_write(char *string2, int i, char **string, char *string3)

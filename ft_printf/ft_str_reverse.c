@@ -6,11 +6,11 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:47:11 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/12/02 14:07:51 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:47:43 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 char	*ft_str_reverse(char *string)
 {

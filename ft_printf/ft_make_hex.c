@@ -6,11 +6,11 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 09:05:02 by nmorgado          #+#    #+#             */
-/*   Updated: 2024/12/16 10:51:44 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:47:04 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 void	make_last(char *str_int, unsigned long integer, int cap_bool,
 char *string2)
