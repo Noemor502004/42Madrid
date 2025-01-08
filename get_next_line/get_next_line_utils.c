@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:35:07 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/05 13:22:24 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/08 13:51:53 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,33 @@ char **read_resul, int i)
 	free(*temp_ret_string);
 	free(*read_resul);
 	return (0);
+}
+
+void	*fake_memmove(void *dest, const void *src, size_t n)
+{
+	size_t	i;
+	char	*string;
+	char	*string2;
+
+	string = (char *) dest;
+	string2 = (char *) src;
+	if (dest > src && n != 0 && string2 != string)
+	{
+		i = n;
+		while (i > 0)
+		{
+			i--;
+			string[i] = string2[i];
+		}
+	}
+	else if (n != 0 && string2 != string)
+	{
+		i = 0;
+		while (i < n)
+		{
+			string[i] = string2[i];
+			i++;
+		}
+	}
+	return (dest);
 }

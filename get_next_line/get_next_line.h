@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:41:16 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/08 11:56:40 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:12:16 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,6 @@ size_t	fake_strlcpy(char *dst, const char *src, size_t size);
 
 int		resize_ret_string(char **temp_ret_string, char **ret_string,
 			char **read_resul, int i);
+
+void	*fake_memmove(void *dest, const void *src, size_t n);
 #endif

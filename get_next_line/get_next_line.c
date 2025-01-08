@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:18:47 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/08 12:00:04 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:02:50 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int	ifrest(char **rest, char **ret_string, int i)
 {
 	i = 0;
 	while ((*rest)[i] != '\0' && (*rest)[i] != '\n')
-		i++;
-	if ((*rest)[i] != '\n')
 		i++;
 	if ((*rest)[i] == '\n')
 		*ret_string = fake_calloc(i + 2, sizeof(char));
@@ -31,8 +29,8 @@ int	ifrest(char **rest, char **ret_string, int i)
 		(*ret_string)[i] = (*rest)[i];
 		if ((*rest)[i] == '\n')
 		{
-			while ((*rest)[i++] != '\0')
-				(*rest)[i - 1] = (*rest)[i];
+			i++;
+			fake_memmove(*rest, *rest + i, fake_strlen(*rest + i) + 1);
 			return (1);
 		}
 		i++;
@@ -50,7 +48,7 @@ int	whileread_resul(char *read_resul, int *i, char *ret_string, char **rest)
 	{
 		bool = 1;
 		ret_string[fake_strlen(ret_string)] = read_resul[*i];
-		*rest = fake_calloc(fake_strlen(read_resul + ++(*i)) + 1,
+		*rest = fake_calloc(fake_strlen(&read_resul[++(*i)]) + 1,
 				sizeof(char));
 		if (!(*rest))
 		{
@@ -64,8 +62,7 @@ int	whileread_resul(char *read_resul, int *i, char *ret_string, char **rest)
 		(*rest)[fake_strlen(*rest)] = '\0';
 	}
 	else
-		ret_string[fake_strlen(ret_string)] = read_resul[*i];
-	(*i)++;
+		ret_string[fake_strlen(ret_string)] = read_resul[(*i)++];
 	return (bool);
 }
 
@@ -133,7 +130,7 @@ char	*get_next_line(int fd)
 	}
 	else
 	{
-		ret_string = fake_calloc(11, sizeof(char));
+		ret_string = fake_calloc(BUFFER_SIZE + 1, sizeof(char));
 		if (!ret_string)
 			return (NULL);
 	}
