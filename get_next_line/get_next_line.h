@@ -6,12 +6,15 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:41:16 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/05 13:21:52 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/08 11:56:40 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
 
 # include <unistd.h>
 # include <stdlib.h>
