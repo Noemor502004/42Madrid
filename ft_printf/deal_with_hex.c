@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 09:09:27 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/08 10:46:33 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/09 17:23:59 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	redimensionate_hex(char **string, char *string2, char *str_int)
 	}
 	ft_strlcpy(*string, string2, 1 + ft_strlen(string2));
 	ft_strlcat(*string, str_int, ft_strlen(*string) + ft_strlen(str_int) + 1);
+	free(str_int);
 	free(string2);
 	return (0);
 }

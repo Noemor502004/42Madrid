@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 09:49:03 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/08 10:47:32 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/09 17:57:27 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	redimensionate_it(char **string, char *string2, char *type)
 {
 	string2 = ft_calloc(ft_strlen(*string) + 1, sizeof(char));
 	ft_strlcpy(string2, *string, ft_strlen(*string) + 1);
-	ft_realloc(string, ft_strlen(type + 1) + ft_strlen(*string) + 1);
+	ft_realloc(string, ft_strlen(type + 1) + ft_strlen(*string) + 3);
 	if (!string)
 	{
 		free(string2);
@@ -60,6 +60,7 @@ int	ft_printf(char const *type, ...)
 {
 	va_list	args;
 	char	*string;
+	int		size;
 
 	va_start(args, type);
 	string = ft_calloc(ft_strlen(type), sizeof(char));
@@ -76,11 +77,10 @@ int	ft_printf(char const *type, ...)
 		}
 		else
 			string[ft_strlen(string)] = *type;
-		if (*type != '\0')
-			type++;
+		type++;
 	}
-	string[ft_strlen(string)] = '\0';
-	write(1, string, ft_strlen(string));
-	free(string);
-	return (ft_strlen(string));
+	size = ft_strlen(string);
+	string[size] = '\0';
+	write(1, string, size);
+	return (free(string), size);
 }
