@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 09:49:03 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/09 17:57:27 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/10 17:47:49 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static int	deal_with_it(char const *type, va_list args, char **string)
 	char	*type_cpy;
 	int		error;
 
+	error = 0;
 	if (*type == 's')
 		error = deal_with_str(args, string);
 	else if (*type == 'c')
@@ -52,8 +53,7 @@ static int	deal_with_it(char const *type, va_list args, char **string)
 	if (error == -1)
 		return (error);
 	type_cpy = (char *)type;
-	string2 = "";
-	return (redimensionate_it(string, string2, type_cpy));
+	return (string2 = "", redimensionate_it(string, string2, type_cpy));
 }
 
 int	ft_printf(char const *type, ...)
