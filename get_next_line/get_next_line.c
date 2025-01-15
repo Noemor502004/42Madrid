@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:18:47 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/08 16:02:50 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/15 16:44:14 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ char	*whilebool(char **read_resul, char **ret_string, int fd, char **rest)
 	int		read_exit;
 	int		i;
 
+	if (BUFFER_SIZE < 1)
+		return (NULL);
 	bool = 0;
 	while (!bool)
 	{
