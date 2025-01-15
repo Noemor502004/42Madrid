@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   deal_with_letters.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 08:50:24 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/08 10:48:04 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:15:39 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,11 @@ int	deal_with_str(va_list args, char **string)
 	i = 0;
 	string2 = ft_calloc(ft_strlen(*string) + 1, sizeof(char));
 	if (!string2)
-	{
-		free(*string);
-		return (-1);
-	}
+		return (free(*string), -1);
 	ft_strlcpy(string2, *string, ft_strlen(*string) + 1);
 	string3 = va_arg(args, char *);
+	if (string3 == NULL)
+		string3 = "(null)";
 	size_str3 = ft_strlen(string3);
 	ft_realloc(string, ft_strlen(*string) + size_str3 + 1);
 	if (!*string)
