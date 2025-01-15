@@ -6,13 +6,14 @@
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:27:19 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/15 17:33:00 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:58:23 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	redimensionate_void(char **string, char *string2, char *string3, int p)
+static int	redimensionate_void(char **string, char *string2, char *string3,
+	int p)
 {
 	string2 = ft_calloc(ft_strlen(*string) + 1, sizeof(char));
 	if (!string2)
