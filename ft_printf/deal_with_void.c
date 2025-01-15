@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:27:19 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/15 17:23:23 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:33:00 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ static int	redimensionate_void(char **string, char *string2, char *string3, int 
 		(*string)[ft_strlen(*string)] = 'x';
 	}
 	ft_strlcat(*string, string3, ft_strlen(*string) + ft_strlen(string3) + 1);
-	//free(string3);
+	if (p == 0)
+		free(string3);
 	free(string2);
 	return (0);
 }
