@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 09:49:03 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/10 17:47:49 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/27 16:13:32 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static int	redimensionate_it(char **string, char *string2, char *type)
 	return (0);
 }
 
-static int	deal_with_it(char const *type, va_list args, char **string)
+static int	deal_with_it(char const *type, va_list args, char **string,
+int *nul_char)
 {
 	char	*string2;
 	char	*type_cpy;
@@ -37,7 +38,7 @@ static int	deal_with_it(char const *type, va_list args, char **string)
 	if (*type == 's')
 		error = deal_with_str(args, string);
 	else if (*type == 'c')
-		error = deal_with_char(args, string, 0);
+		error = deal_with_char(args, string, 0, nul_char);
 	else if (*type == 'd' || *type == 'i')
 		error = deal_with_int(args, string);
 	else if (*type == 'p')
@@ -49,7 +50,7 @@ static int	deal_with_it(char const *type, va_list args, char **string)
 	else if (*type == 'X')
 		error = deal_with_hex(args, string, 1);
 	else if (*type == '%')
-		error = deal_with_char(args, string, 1);
+		error = deal_with_char(args, string, 1, nul_char);
 	if (error == -1)
 		return (error);
 	type_cpy = (char *)type;
@@ -61,18 +62,16 @@ int	ft_printf(char const *type, ...)
 	va_list	args;
 	char	*string;
 	int		size;
+	int		nul_char;
 
+	nul_char = 0;
 	va_start(args, type);
 	string = ft_calloc(ft_strlen(type), sizeof(char));
 	while (*type != '\0')
 	{
-		if ((*type == '%') && (*(type + 1) == 's' || *(type + 1) == 'c'
-				|| *(type + 1) == 'p' || *(type + 1) == 'd'
-				|| *(type + 1) == 'i' || *(type + 1) == 'u'
-				|| *(type + 1) == 'x' || *(type + 1) == 'x'
-				|| *(type + 1) == 'X' || *(type + 1) == '%'))
+		if (*type == '%')
 		{
-			if (deal_with_it(++type, args, &string) == -1)
+			if (deal_with_it(++type, args, &string, &nul_char) == -1)
 				return (-1);
 		}
 		else
@@ -82,5 +81,5 @@ int	ft_printf(char const *type, ...)
 	size = ft_strlen(string);
 	string[size] = '\0';
 	write(1, string, size);
-	return (free(string), size);
+	return (free(string), size + nul_char);
 }

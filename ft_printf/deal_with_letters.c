@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 08:50:24 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/15 17:15:39 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/27 16:08:08 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	chr_write(char **string, int size, char *string2, char charac)
 	return (0);
 }
 
-int	deal_with_char(va_list args, char **string, int perbool)
+int	deal_with_char(va_list args, char **string, int perbool, int *nul_char)
 {
 	char	*string2;
 	char	charac;
@@ -86,6 +86,8 @@ int	deal_with_char(va_list args, char **string, int perbool)
 	if (perbool == 0)
 	{
 		charac_int = va_arg(args, int);
+		if (charac_int == 0)
+			*nul_char += 1;
 		charac = charac_int;
 	}
 	else

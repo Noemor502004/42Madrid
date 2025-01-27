@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 12:38:24 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/08 10:40:08 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/01/27 16:01:53 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		ft_printf(char const *type, ...);
 
 int		deal_with_str(va_list args, char **string);
 
-int		deal_with_char(va_list args, char **string, int perbool);
+int		deal_with_char(va_list args, char **string, int perbool, int *nul_char);
 
 int		deal_with_int(va_list args, char **string);
 
