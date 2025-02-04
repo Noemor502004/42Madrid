@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ltoa.c                                          :+:      :+:    :+:   */
+/*   ft_uitoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:31:28 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/08 10:46:57 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/02/03 18:44:19 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ static char	*mk_result(int *i, char *result)
 	return (result);
 }
 
-static int	write_result(int temp, char *result, int n, int exponent)
+static int	write_result(unsigned int temp, char *result, int n,
+	unsigned int exponent)
 {
-	int	i;
+	unsigned int	i;
 	int	j;
 
 	j = 1;
@@ -43,12 +44,12 @@ static int	write_result(int temp, char *result, int n, int exponent)
 	return (i);
 }
 
-char	*ft_ltoa(unsigned long n)
+char	*ft_uitoa(unsigned int n)
 {
 	int				i;
-	unsigned long	temp;
+	unsigned int	temp;
 	char			*result;
-	unsigned long	exponent;
+	unsigned int	exponent;
 
 	i = 0;
 	temp = n;
