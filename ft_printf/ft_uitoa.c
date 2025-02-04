@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:31:28 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/02/03 18:44:19 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:07:15 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	write_result(unsigned int temp, char *result, int n,
 	unsigned int exponent)
 {
 	unsigned int	i;
-	int	j;
+	int				j;
 
 	j = 1;
 	i = 0;
