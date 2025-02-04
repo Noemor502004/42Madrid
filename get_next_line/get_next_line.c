@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:18:47 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/20 17:09:11 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:52:24 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	ifrest(char **rest, char **ret_string, int i)
 		i++;
 	}
 	free(*rest);
+	*rest = NULL;
 	return (0);
 }
 
@@ -97,9 +98,9 @@ char	*whilebool(char **read_resul, char **ret_string, int fd, char **rest)
 		if (!(*read_resul) || BUFFER_SIZE < 1)
 			return (free(*ret_string), NULL);
 		read_exit = read(fd, *read_resul, BUFFER_SIZE);
-		if (read_exit == 0)
+		if (read_exit == 0 && fake_strlen(*ret_string))
 			return (free(*read_resul), *ret_string);
-		if (read_exit < 0)
+		else if (read_exit <= 0)
 			return (free(*read_resul), free(*ret_string), NULL);
 		i = whilebool2(read_resul, ret_string, rest, &bool);
 		if (i < 0)
