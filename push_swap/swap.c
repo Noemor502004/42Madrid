@@ -1,43 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args.c                                       :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 17:53:30 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/31 16:03:06 by nmorgado         ###   ########.fr       */
+/*   Created: 2025/01/31 16:09:17 by nmorgado          #+#    #+#             */
+/*   Updated: 2025/01/31 17:32:50 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <unistd.h>
 
-void	check_int(char *argv[], int i)
+void	swap(t_stack **stack, int b)
 {
-	int	j;
-	int	numb;
+	t_stack	*temp;
 
-	numb = ft_atoi(*argv[i]);
-	if (numb > 2147483647 || numb < -2147483648)
-	{
-		write(1, "Error\n", 6);
-		_exit(-1);
-	}
+	if (!b)
+		write(1, "sa\n", 3);
+	else if (b == 1)
+		write(1, "sb\n", 3);
+	if (*stack == NULL || (*stack)->next == NULL)
+		return ;
+	temp = *stack;
+	*stack = (*stack)->next;
+	temp->next = (*stack)->next;
+	(*stack)->next = temp;
 }
 
-void	check_duplicate(t_stack *a, char *argv[], int i)
+void	sswap(t_stack *a, t_stack *b)
 {
-	int	j;
-
-	j = 0;
-	while (j < i - 1)
-	{
-		if (a->num == ft_atoi(*argv[i]))
-		{
-			write(1, "Error\n", 6);
-			_exit(-1);
-		}
-		j++;
-		a = a->next;
-	}
+	write(1, "ss\n", 3);
+	swap(a, 2);
+	swap(b, 2);
 }

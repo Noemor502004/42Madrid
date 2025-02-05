@@ -1,43 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args.c                                       :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 17:53:30 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/31 16:03:06 by nmorgado         ###   ########.fr       */
+/*   Created: 2025/01/31 17:19:43 by nmorgado          #+#    #+#             */
+/*   Updated: 2025/01/31 18:15:31 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_int(char *argv[], int i)
+void	push(t_stack **a, t_stack **b, int c)
 {
-	int	j;
-	int	numb;
+	t_stack	*temp;
 
-	numb = ft_atoi(*argv[i]);
-	if (numb > 2147483647 || numb < -2147483648)
+	if (!c)
+		write(1, "pa\n", 3);
+	else if (c == 1)
+		write(1, "pb\n", 3);
+	if (c == 0 && !(*a))
+		return ;
+	else if (c == 1 && !(*b))
+		return ;
+	if (c == 0)
 	{
-		write(1, "Error\n", 6);
-		_exit(-1);
+		temp = *a;
+		temp->next = *b;
+		*b = temp;
+		*a = (*a)->next;
 	}
-}
-
-void	check_duplicate(t_stack *a, char *argv[], int i)
-{
-	int	j;
-
-	j = 0;
-	while (j < i - 1)
+	else if (c == 1)
 	{
-		if (a->num == ft_atoi(*argv[i]))
-		{
-			write(1, "Error\n", 6);
-			_exit(-1);
-		}
-		j++;
-		a = a->next;
+		temp = *b;
+		temp->next = *a;
+		*a = temp;
+		*b = (*b)->next;
 	}
 }

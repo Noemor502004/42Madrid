@@ -1,43 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args.c                                       :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 17:53:30 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/31 16:03:06 by nmorgado         ###   ########.fr       */
+/*   Created: 2025/01/31 18:04:51 by nmorgado          #+#    #+#             */
+/*   Updated: 2025/01/31 18:14:43 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <unistd.h>
 
-void	check_int(char *argv[], int i)
+void	rotate(t_stack **stack, int b)
 {
-	int	j;
-	int	numb;
-
-	numb = ft_atoi(*argv[i]);
-	if (numb > 2147483647 || numb < -2147483648)
-	{
-		write(1, "Error\n", 6);
-		_exit(-1);
-	}
+	t_stack	*last;
+	
+	if (!b)
+		write(1, "ra\n", 3);
+	else if (b == 1)
+		write(1, "rb\n", 3);
+	last = *stack;
+	while (last->next != NULL)
+		last = last->next;
+	last->next = *stack;
+	*stack = (*stack)->next;
 }
 
-void	check_duplicate(t_stack *a, char *argv[], int i)
+void	rrotate(t_stack **a, t_stack **b)
 {
-	int	j;
-
-	j = 0;
-	while (j < i - 1)
-	{
-		if (a->num == ft_atoi(*argv[i]))
-		{
-			write(1, "Error\n", 6);
-			_exit(-1);
-		}
-		j++;
-		a = a->next;
-	}
+	write(1, "rr\n", 3);
+	rotate(a, 2);
+	rotate(b, 2);
 }
