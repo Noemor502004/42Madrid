@@ -6,7 +6,7 @@
 #    By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 17:17:57 by nmorgado          #+#    #+#              #
-#    Updated: 2025/01/08 10:48:30 by nmorgado         ###   ########.fr        #
+#    Updated: 2025/02/03 18:42:54 by nmorgado         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ deal_with_int.c \
 deal_with_letters.c \
 deal_with_unsig.c \
 deal_with_void.c \
-ft_ltoa.c \
+ft_uitoa.c \
 ft_make_hex.c \
 ft_printf.c \
 ft_realloc.c \

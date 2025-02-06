@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   deal_with_letters.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 08:50:24 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/27 16:08:08 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/02/04 15:56:50 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,12 @@ static int	chr_write(char **string, int size, char *string2, char charac)
 	}
 	ft_strlcpy(*string, string2, size + 1);
 	(*string)[ft_strlen(*string)] = charac;
+	if (charac == 0)
+	{
+		write(1, *string, ft_strlen(*string) + 1);
+		free(*string);
+		*string = ft_calloc(1, sizeof(char));
+	}
 	free(string2);
 	return (0);
 }
@@ -87,7 +93,7 @@ int	deal_with_char(va_list args, char **string, int perbool, int *nul_char)
 	{
 		charac_int = va_arg(args, int);
 		if (charac_int == 0)
-			*nul_char += 1;
+			*nul_char += ft_strlen(*string) + 1;
 		charac = charac_int;
 	}
 	else

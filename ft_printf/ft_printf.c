@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 09:49:03 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/27 16:13:32 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:45:16 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	ft_printf(char const *type, ...)
 	int		size;
 	int		nul_char;
 
+	if (type == NULL)
+		return (-1);
 	nul_char = 0;
 	va_start(args, type);
 	string = ft_calloc(ft_strlen(type), sizeof(char));

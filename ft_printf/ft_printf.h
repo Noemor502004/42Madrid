@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 12:38:24 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/27 16:01:53 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/02/03 18:44:39 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		deal_with_unsig(va_list args, char **string);
 
 int		redimensionate_hex(char **string, char *string2, char *str_int);
 
-char	*ft_ltoa(unsigned long n);
+char	*ft_uitoa(unsigned int n);
 
 int		ft_printf(char const *type, ...);
 
@@ -42,5 +42,5 @@ void	ft_realloc(char **string, int size);
 
 char	*ft_str_reverse(char *str_int);
 
-char	*ft_make_hex(unsigned long integer, int cap_bool);
+char	*ft_make_hex(unsigned int integer, int cap_bool);
 #endif

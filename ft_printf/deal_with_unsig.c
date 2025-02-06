@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 09:07:09 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/08 10:48:05 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/02/03 18:50:45 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int	calloc_checks(char *str_int, char *string2, char **string, int size)
 
 int	deal_with_unsig(va_list args, char **string)
 {
-	char	*string2;
-	int		integer;
-	char	*str_int;
-	int		size;
+	char			*string2;
+	unsigned int	integer;
+	char			*str_int;
+	int				size;
 
 	size = ft_strlen(*string);
 	string2 = ft_calloc(size + 1, sizeof(char));
@@ -46,10 +46,7 @@ int	deal_with_unsig(va_list args, char **string)
 	}
 	ft_strlcpy(string2, *string, size + 1);
 	integer = va_arg(args, unsigned int);
-	if (integer >= 0)
-		str_int = ft_itoa(integer);
-	else
-		str_int = ft_ltoa(4294967296 + integer);
+	str_int = ft_uitoa(integer);
 	calloc_checks(str_int, string2, string, size);
 	ft_strlcpy(*string, string2, size + 1);
 	ft_strlcat(*string, str_int, ft_strlen(str_int) + size + 1);

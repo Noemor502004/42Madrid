@@ -6,13 +6,13 @@
 /*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 09:05:02 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/08 10:47:04 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/02/03 18:39:37 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	make_last(char *str_int, unsigned long integer, int cap_bool,
+void	make_last(char *str_int, unsigned int integer, int cap_bool,
 char *string2)
 {
 	if (integer != 0)
@@ -27,14 +27,14 @@ char *string2)
 		}
 		else
 		{
-			string2 = ft_itoa(integer);
+			string2 = ft_uitoa(integer);
 			str_int[ft_strlen(str_int)] = *string2;
 			free (string2);
 		}
 	}
 }
 
-int	make_string(char *str_int, unsigned long integer, int cap_bool,
+int	make_string(char *str_int, unsigned int integer, int cap_bool,
 char *string2)
 {
 	int	i;
@@ -55,7 +55,7 @@ char *string2)
 		}
 		else
 		{
-			string2 = ft_itoa(rest);
+			string2 = ft_uitoa(rest);
 			str_int[++i] = *string2;
 			free (string2);
 		}
@@ -63,7 +63,7 @@ char *string2)
 	return (integer);
 }
 
-char	*ft_make_hex(unsigned long integer, int cap_bool)
+char	*ft_make_hex(unsigned int integer, int cap_bool)
 {
 	char	*string2;
 	char	*str_int;
