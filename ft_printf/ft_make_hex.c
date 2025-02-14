@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_make_hex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 09:05:02 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/02/03 18:39:37 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/02/14 14:48:26 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,19 @@
 void	make_last(char *str_int, unsigned int integer, int cap_bool,
 char *string2)
 {
-	if (integer != 0)
+	if (integer >= 10)
 	{
-		if (integer >= 10)
-		{
-			if (cap_bool)
-				integer += 55;
-			else
-				integer += 87;
-			str_int[ft_strlen(str_int)] = integer;
-		}
+		if (cap_bool)
+			integer += 55;
 		else
-		{
-			string2 = ft_uitoa(integer);
-			str_int[ft_strlen(str_int)] = *string2;
-			free (string2);
-		}
+			integer += 87;
+		str_int[ft_strlen(str_int)] = integer;
+	}
+	else
+	{
+		string2 = ft_uitoa(integer);
+		str_int[ft_strlen(str_int)] = *string2;
+		free (string2);
 	}
 }
 
