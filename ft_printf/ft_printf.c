@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmorgado <nmorgado@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 09:49:03 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/02/04 16:45:16 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/03/04 16:57:13 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,5 @@ int	ft_printf(char const *type, ...)
 	size = ft_strlen(string);
 	string[size] = '\0';
 	write(1, string, size);
-	return (free(string), size + nul_char);
+	return (va_end(args), free(string), size + nul_char);
 }

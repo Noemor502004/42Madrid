@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:27:19 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/02/14 15:10:22 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/03/04 15:58:27 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	deal_with_void(va_list args, char **string)
 	char			*string3;
 
 	nothing = va_arg(args, void *);
-	addres = (unsigned long)nothing;
+	addres = (unsigned long int)nothing;
 	if (addres == 0)
 	{
 		string3 = "(nil)";

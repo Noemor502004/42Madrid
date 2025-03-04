@@ -6,14 +6,13 @@
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 09:05:02 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/02/14 14:48:26 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/03/04 16:29:12 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	make_last(char *str_int, unsigned int integer, int cap_bool,
-char *string2)
+void	make_last(char *str_int, unsigned int integer, int cap_bool)
 {
 	if (integer >= 10)
 	{
@@ -25,14 +24,12 @@ char *string2)
 	}
 	else
 	{
-		string2 = ft_uitoa(integer);
-		str_int[ft_strlen(str_int)] = *string2;
-		free (string2);
+		integer += '0';
+		str_int[ft_strlen(str_int)] = integer;
 	}
 }
 
-int	make_string(char *str_int, unsigned int integer, int cap_bool,
-char *string2)
+int	make_string(char *str_int, unsigned long int integer, int cap_bool)
 {
 	int	i;
 	int	rest;
@@ -52,25 +49,22 @@ char *string2)
 		}
 		else
 		{
-			string2 = ft_uitoa(rest);
-			str_int[++i] = *string2;
-			free (string2);
+			rest += '0';
+			str_int[++i] = rest;
 		}
 	}
 	return (integer);
 }
 
-char	*ft_make_hex(unsigned int integer, int cap_bool)
+char	*ft_make_hex(unsigned long int integer, int cap_bool)
 {
-	char	*string2;
 	char	*str_int;
 
 	str_int = ft_calloc(17, sizeof(char));
-	string2 = 0;
 	if (!str_int)
 		return (0);
-	integer = make_string(str_int, integer, cap_bool, string2);
-	make_last(str_int, integer, cap_bool, string2);
+	integer = make_string(str_int, integer, cap_bool);
+	make_last(str_int, integer, cap_bool);
 	str_int = ft_str_reverse(str_int);
 	return (str_int);
 }
