@@ -6,17 +6,18 @@
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 18:04:51 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/02/10 17:49:53 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/03/09 13:24:14 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <unistd.h>
 
 void	rotate(t_stack **stack, int b)
 {
 	t_stack	*last;
+	t_stack	*original_stack;
 
+	original_stack = *stack;
 	if (!b)
 		write(1, "ra\n", 3);
 	else if (b == 1)
@@ -26,6 +27,7 @@ void	rotate(t_stack **stack, int b)
 		last = last->next;
 	last->next = *stack;
 	*stack = (*stack)->next;
+	original_stack->next = NULL;
 }
 
 void	rrotate(t_stack **a, t_stack **b)

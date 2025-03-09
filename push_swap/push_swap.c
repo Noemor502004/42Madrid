@@ -6,11 +6,10 @@
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:53:55 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/02/10 17:49:22 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/03/09 13:24:23 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "push_swap.h"
 
 void	push_swap(int number, ...)
