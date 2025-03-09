@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 09:49:03 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/03/04 16:57:13 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/03/09 14:26:57 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ int *nul_char)
 		error = deal_with_void(args, string);
 	else if (*type == 'u')
 		error = deal_with_unsig(args, string);
-	else if (*type == 'x')
-		error = deal_with_hex(args, string, 0);
-	else if (*type == 'X')
-		error = deal_with_hex(args, string, 1);
+	else if (*type == 'x' || *type == 'X')
+		error = deal_with_hex(args, string, *type);
 	else if (*type == '%')
 		error = deal_with_char(args, string, 1, nul_char);
+	else
+		return (-1);
 	if (error == -1)
 		return (error);
 	type_cpy = (char *)type;
@@ -74,7 +74,7 @@ int	ft_printf(char const *type, ...)
 		if (*type == '%')
 		{
 			if (deal_with_it(++type, args, &string, &nul_char) == -1)
-				return (-1);
+				return (free(string), -1);
 		}
 		else
 			string[ft_strlen(string)] = *type;

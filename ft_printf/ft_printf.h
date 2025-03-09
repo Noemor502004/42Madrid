@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 12:38:24 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/03/04 16:00:38 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/03/09 14:23:35 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-int		deal_with_hex(va_list args, char **string, int cap_bool);
+int		deal_with_hex(va_list args, char **string, char format);
 
 int		deal_with_void(va_list args, char **string);
 
