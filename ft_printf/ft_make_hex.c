@@ -6,13 +6,13 @@
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 09:05:02 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/03/04 16:29:12 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/03/11 12:57:46 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	make_last(char *str_int, unsigned int integer, int cap_bool)
+void	make_last(char *str_int, unsigned long int integer, int cap_bool)
 {
 	if (integer >= 10)
 	{

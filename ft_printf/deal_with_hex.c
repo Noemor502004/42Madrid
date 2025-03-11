@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 09:09:27 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/03/09 14:22:59 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/03/11 12:54:59 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,17 @@ int	redimensionate_hex(char **string, char *string2, char *str_int)
 
 int	deal_with_hex(va_list args, char **string, char format)
 {
-	char	*string2;
-	int		integer;
-	char	*str_int;
-	int		cap_bool;
+	char					*string2;
+	unsigned long int		integer;
+	char					*str_int;
+	int						cap_bool;
 
 	if (format == 'x')
 		cap_bool = 0;
 	else
 		cap_bool = 1;
 	string2 = 0;
-	integer = va_arg(args, int);
+	integer = va_arg(args, unsigned long int);
 	str_int = ft_make_hex(integer, cap_bool);
 	if (str_int == 0)
 	{
