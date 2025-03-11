@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:09:17 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/03/09 13:24:18 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/03/10 14:49:27 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	swap(t_stack **stack, int b)
 	(*stack)->next = temp;
 }
 
-void	sswap(t_stack *a, t_stack *b)
+void	sswap(t_stack **a, t_stack **b)
 {
 	write(1, "ss\n", 3);
 	swap(a, 2);
