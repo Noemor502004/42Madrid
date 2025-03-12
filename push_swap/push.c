@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 17:19:43 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/01/31 18:15:31 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/03/12 13:17:08 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@ void	push(t_stack **a, t_stack **b, int c)
 		return ;
 	if (c == 0)
 	{
-		temp = *a;
-		temp->next = *b;
-		*b = temp;
-		*a = (*a)->next;
+		temp = *b;
+		*b = (*b)->next;
+		temp->next = *a;
+		*a = temp;
 	}
 	else if (c == 1)
 	{
-		temp = *b;
-		temp->next = *a;
-		*a = temp;
-		*b = (*b)->next;
+		temp = *a;
+		*a = (*a)->next;
+		temp->next = *b;
+		*b = temp;
 	}
 }

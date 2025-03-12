@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:41:19 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/03/10 14:49:49 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/03/11 13:47:49 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ void	sswap(t_stack **a, t_stack **b);
 
 void	check_int(char *argv);
 
-void	check_duplicate(t_stack *a, char *argv);
+void	check_duplicate(t_stack **a, char *argv);
 #endif
