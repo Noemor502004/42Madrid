@@ -6,7 +6,7 @@
 /*   By: nmorgado <nmorgado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 09:49:03 by nmorgado          #+#    #+#             */
-/*   Updated: 2025/03/09 14:26:57 by nmorgado         ###   ########.fr       */
+/*   Updated: 2025/03/13 14:10:07 by nmorgado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	ft_printf(char const *type, ...)
 		return (-1);
 	nul_char = 0;
 	va_start(args, type);
-	string = ft_calloc(ft_strlen(type), sizeof(char));
+	string = ft_calloc(ft_strlen(type) + 1, sizeof(char));
 	while (*type != '\0')
 	{
 		if (*type == '%')
